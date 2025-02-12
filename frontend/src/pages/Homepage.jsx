@@ -60,7 +60,7 @@ const HomePage = () => {
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-[#1e293b] p-5 flex flex-col space-y-4 text-center md:hidden">
+        <div className="absolute top-16 left-0 w-full bg-[#1e293b] p-5 flex flex-col space-y-4 text-center z-50 md:hidden">
           <a href="#" className="text-lg hover:text-blue-400">
             Home
           </a>
@@ -77,7 +77,7 @@ const HomePage = () => {
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10 mt-24 w-full px-6 md:px-16">
         {/* Card 1 */}
         <motion.div
-          className="p-8 w-full h-80 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
+          className="p-12 ml-20 w-90 h-100 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
@@ -89,14 +89,14 @@ const HomePage = () => {
           <p className="text-gray-300 mt-4">
             Expand your reach and grow faster.
           </p>
-          <button className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-300">
+          <button className="mt-32  px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-300">
             Read More
           </button>
         </motion.div>
 
         {/* Card 2 */}
         <motion.div
-          className="p-8 w-full h-80 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
+          className="p-12 w-90 ml-15 h-100 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -108,14 +108,14 @@ const HomePage = () => {
           <p className="text-gray-300 mt-4">
             Sell your products and reach more customers online.
           </p>
-          <button className="mt-8 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition duration-300">
+          <button className="mt-26 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition duration-300">
             Learn More
           </button>
         </motion.div>
 
         {/* Card 3 */}
         <motion.div
-          className="p-8 w-full h-80 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
+          className="p-10 w-90 ml-10 h-100 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -125,7 +125,7 @@ const HomePage = () => {
           <p className="text-gray-300 mt-4">
             Choose the best plan for your business.
           </p>
-          <button className="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition duration-300">
+          <button className="mt-32 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition duration-300">
             See More
           </button>
         </motion.div>
