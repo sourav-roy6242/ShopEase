@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Register from './pages/registerPage'
 import './App.css'
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <div>
-
+       <Register />
     </div>
   )
 }
