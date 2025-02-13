@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react"; // Icons for mobile menu
 
-const HomePage = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Register = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center bg-[#0f172a] text-white overflow-hidden">
-      {/* Small Blocks Animation Background */}
+    <div className="relative min-h-screen flex flex-col justify-center items-center bg-[#0f172a] text-white">
+      {/* 3D Animated Background */}
+     
       <div className="absolute inset-0 overflow-hidden">
         {Array(20)
           .fill(0)
@@ -48,88 +48,70 @@ const HomePage = () => {
             Login
           </a>
         </div>
-
-        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          ☰
         </button>
       </nav>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-[#1e293b] p-5 flex flex-col space-y-4 text-center md:hidden">
-          <a href="#" className="text-lg hover:text-blue-400">
+      {/* Mobile Menu (Fix: Added z-50 to ensure visibility) */}
+      {menuOpen && (
+        <div className="absolute top-16 right-5 bg-gray-800 p-5 rounded-lg shadow-lg md:hidden z-50">
+          <a href="#" className="block py-2 text-lg hover:text-blue-400">
             Home
           </a>
-          <a href="#" className="text-lg hover:text-blue-400">
+          <a href="#" className="block py-2 text-lg hover:text-blue-400">
             About Us
           </a>
-          <a href="#" className="text-lg hover:text-blue-400">
+          <a href="#" className="block py-2 text-lg hover:text-blue-400">
             Login
           </a>
         </div>
       )}
 
-      {/* Main Content with Responsive Cards */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10 mt-24 w-full px-6 md:px-16">
-        {/* Card 1 */}
-        <motion.div
-          className="p-8 w-full h-80 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
-          initial={{ y: 70, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          whileHover={{ scale: 1.1, rotate: 3 }}
-        >
-          <h2 className="text-2xl md:text-3xl font-bold">
-            Your Business, Our Customers
-          </h2>
-          <p className="text-gray-300 mt-4">
-            Expand your reach and grow faster.
-          </p>
-          <button className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-300">
-            Read More
+      {/* Registration Form */}
+      <motion.div
+        className="relative z-10 p-8 rounded-3xl shadow-xl bg-gray-900/80 backdrop-blur-lg w-full max-w-lg border border-gray-700"
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-3xl font-bold text-center text-white">
+          Register Your Shop
+        </h2>
+        <form className="mt-6 space-y-4">
+          <input
+            type="text"
+            placeholder="Shop Name"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="text"
+            placeholder="Shop Owner Name"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="text"
+            placeholder="Shop Address"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="email"
+            placeholder="Owner Email"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="tel"
+            placeholder="Owner Mobile Number"
+            className="w-full p-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300">
+            Register
           </button>
-        </motion.div>
-
-        {/* Card 2 */}
-        <motion.div
-          className="p-8 w-full h-80 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
-          initial={{ y: 70, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          whileHover={{ scale: 1.1, rotate: -3 }}
-        >
-          <h2 className="text-2xl md:text-3xl font-bold">
-            Make Your Business Online
-          </h2>
-          <p className="text-gray-300 mt-4">
-            Sell your products and reach more customers online.
-          </p>
-          <button className="mt-8 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition duration-300">
-            Learn More
-          </button>
-        </motion.div>
-
-        {/* Card 3 */}
-        <motion.div
-          className="p-8 w-full h-80 bg-gray-900/80 backdrop-blur-lg border border-gray-700 shadow-2xl rounded-3xl text-center transform transition-all duration-300"
-          initial={{ y: 70, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          whileHover={{ scale: 1.1, rotate: 3 }}
-        >
-          <h2 className="text-2xl md:text-3xl font-bold">See Subscription</h2>
-          <p className="text-gray-300 mt-4">
-            Choose the best plan for your business.
-          </p>
-          <button className="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition duration-300">
-            See More
-          </button>
-        </motion.div>
-      </div>
+        </form>
+      </motion.div>
 
       {/* Footer */}
       <footer className="absolute bottom-0 w-full text-center p-4 bg-[#1e293b] text-gray-300">
@@ -139,4 +121,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Register;
