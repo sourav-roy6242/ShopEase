@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Register from './pages/registerPage'
 import HomePage from './pages/Homepage'
+import AboutUs from './pages/AboutUs'
 import './App.css'
 
 function App() {
@@ -9,6 +10,9 @@ function App() {
   return (
     <div>
       <HomePage />
+      <AboutUs />
+
+      
        {/* <Register /> */}
     </div>
   )
