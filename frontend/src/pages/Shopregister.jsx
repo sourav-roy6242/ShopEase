@@ -1,23 +1,21 @@
 import React from "react";
 import Register from "../assets/register.jpg";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar.jsx";
 import RegisterTwo from "../assets/register2.jpg";
 import Footer from "../components/footer";
+import { useNavigate } from "react-router-dom";
+
 const Shopregister = () => {
+
+  const navigate = useNavigate();
   return (
     <div>
-      <Navbar />
-      <div>
-        <img
-          src={RegisterTwo}
-          alt="register"
-          className="relative w-full h-screen flex items-center justify-end bg-cover bg-center  bg-no-repeat "
-        />
-      </div>
+      
       <div
         className="relative w-full h-screen flex items-center justify-end bg-cover bg-center  bg-no-repeat px-16"
         style={{ backgroundImage: `url(${Register})` }} // ✅ Proper background image
       >
+        <Navbar />
         {/* Overlay - Soft Transparency (Fixes Blackout Issue) */}
         <div className="absolute inset-0 bg-black/10 bg-opacity-20"></div>
 
@@ -99,13 +97,16 @@ const Shopregister = () => {
             </div>
 
             {/* Register Button */}
-            <button className="w-full p-3 bg-blue-600/60 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition">
+            <button 
+            type="submit"
+            onClick={() => navigate("/Uploadpage")}
+            className="w-full p-3 bg-blue-600/60 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition">
               Register Shop
             </button>
           </form>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -109,7 +109,7 @@ const ProductForm = () => {
               className="mb-8 p-6 bg-white rounded-lg shadow-lg space-y-4"
             >
               <h3 className="text-xl font-medium mb-4 text-gray-800">
-                Product #{index + 1}
+                Product {index + 1}
               </h3>
 
               {/* Product Name */}
@@ -217,6 +217,7 @@ const ProductForm = () => {
           </div>
         </form>
       </div>
+  
     </div>
   );
 };

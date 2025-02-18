@@ -48,13 +48,17 @@ const Navbar = () => {
       <div className="flex items-center gap-12">
         <h2 className="text-2xl font-bold w-28 sm:w-32">ShopEase</h2>
         <ul className="flex ml-110 font-bold text-2xl list-none gap-10">
-          <li className="hover:text-indigo-400 cursor-pointer transition duration-300">
+          <li 
+          onClick={() => navigate("/")}
+          className="hover:text-indigo-400 drop-shadow-lg cursor-pointer  transition duration-300">
             Home
           </li>
-          <li className="hover:text-indigo-400 cursor-pointer transition duration-300">
+          <li
+            onClick={() => navigate("/aboutus")}
+           className="hover:text-indigo-400 drop-shadow-lg cursor-pointer transition duration-300">
             About Us
           </li>
-          <li className="hover:text-indigo-400 cursor-pointer transition duration-300">
+          <li className="hover:text-indigo-400 drop-shadow-lg cursor-pointer transition duration-300">
             Contact Us
           </li>
         </ul>

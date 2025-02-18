@@ -10,7 +10,11 @@ import Shopregister from "./pages/Shopregister";
 import AboutUs from "./pages/AboutUs";
 import ProductForm from "./pages/Uploadpage";
 import UserRegistration from "./pages/userRegister";
-import Otpverify from "./pages/userOtpVerify";
+import EmailVerify from "./pages/EmailVerify";
+import ResetPassword from "./pages/ResetPassword";
+import UploadPage from "./pages/Uploadpage";
+import SubscriptionPage from "./pages/SubcriptionPage";
+import WorkingDetails from "./pages/WorkingDetails";
 
 import "./App.css";
 
@@ -18,7 +22,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-   <div>
+    <div>
       <ToastContainer />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -27,9 +31,12 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/productform" element={<ProductForm />} />
         <Route path="/userregister" element={<UserRegistration />} />
-        <Route path="/otpverify" element={<Otpverify />} />
+        <Route path="/email-verify" element={<EmailVerify />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/uploadpage" element={<UploadPage />} />
+        <Route path="/subscription" element={<SubscriptionPage />} />
+        <Route path="/workingdetails" element={<WorkingDetails />} />
       </Routes>
-   
     </div>
   );
 }

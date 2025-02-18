@@ -8,12 +8,16 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userData } = useContext(AppContext);
 
+   const navigate = useNavigate();
+
   return (
+    
     <div className="relative min-h-screen flex flex-col justify-center items-center bg-[#e8f7ff]  text-black overflow-hidden">
       {/* Small Floating Blocks Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -170,6 +174,7 @@ const HomePage = () => {
         </motion.h4>
 
         <motion.button
+          onClick={() => navigate("/subscription")}
           className="absolute top-90 left-40 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white drop-shadow-lg font-semibold rounded-lg"
           initial={{ x: -200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -196,7 +201,7 @@ const HomePage = () => {
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          whileHover={{ scale: 1.1, rotate: 3 }}
+          whileHover={{ scale: 1.1 }}
         >
           <h2 className="text-2xl font-bold text-black">
             Your Business, Our Customers
@@ -204,7 +209,9 @@ const HomePage = () => {
           <p className="text-black-400 mt-4">
             Expand your reach and grow faster.
           </p>
-          <button className="mt-20 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg">
+          <button
+          onClick={() => navigate("/workingdetails")}
+           className="mt-20 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg">
             Read More
           </button>
         </motion.div>
@@ -214,7 +221,7 @@ const HomePage = () => {
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          whileHover={{ scale: 1.1, rotate: -3 }}
+          whileHover={{ scale: 1.1}}
         >
           <h2 className="text-2xl font-bold text-black">
             Make Your Business Online
@@ -222,8 +229,10 @@ const HomePage = () => {
           <p className="text-black-400 mt-4">
             Sell your products and reach more customers online.
           </p>
-          <button className="mt-15 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg">
-            Learn More
+          <button 
+          onClick={() => navigate("/shopregister")}
+          className="mt-15 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg">
+            Register Now
           </button>
         </motion.div>
 
@@ -232,13 +241,15 @@ const HomePage = () => {
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          whileHover={{ scale: 1.1, rotate: 3 }}
+          whileHover={{ scale: 1.1}}
         >
           <h2 className="text-2xl font-bold text-black">See Subscription</h2>
           <p className="text-black-400 mt-4">
             Choose the best plan for your business.
           </p>
-          <button className="mt-30 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg">
+          <button 
+          onClick={() => navigate("/subscription")}
+          className="mt-30 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg">
             See More
           </button>
         </motion.div>

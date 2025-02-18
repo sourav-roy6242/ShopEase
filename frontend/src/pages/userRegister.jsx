@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -56,6 +58,9 @@ const Login = () => {
   };
 
   return (
+<div>
+<Navbar/>
+
     <div
       className="flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br
     from-blue-300 to-purple-400  "
@@ -152,6 +157,8 @@ const Login = () => {
           </p>
         )}
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };
