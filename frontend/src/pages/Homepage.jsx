@@ -126,7 +126,7 @@ const HomePage = () => {
         </motion.div>
       </div>
 
-      <div className="relative mt-7">
+      <div className="relative   mt-7">
         {/* Background Image */}
         <img
           className="w-full h-auto drop-shadow-lg"

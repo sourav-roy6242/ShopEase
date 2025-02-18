@@ -1,31 +1,26 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import connectDB from "./config/db.js";
+import authRouter from "./routes/authRoute.js";
+import userRouter from "./routes/userRoute.js";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 4000;
+connectDB();
 
-// Middleware
+const allowedOrigins = ["http://localhost:5173"];
+
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+//Api endpoints
+app.get("/", (req, res) => res.send("API Working"));
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
-// Sample Route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-// Start server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => console.log(`Server listening on port ${port}`));

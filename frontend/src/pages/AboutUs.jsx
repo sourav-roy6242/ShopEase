@@ -1,6 +1,7 @@
 // import React from "react";
 import { motion } from "framer-motion";
 import photo from '../assets/members.jpg'
+import aboutus from '../assets/register2.jpg'
 
 const teamMembers = [
   { name: "Sourav Roy", role: "CEO & Founder", image: "Sourav.jpg" },
@@ -15,6 +16,7 @@ const AboutUs = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
+      
     >
       <motion.div 
         className="max-w-3xl bg-white shadow-lg rounded-2xl p-8 text-center"
