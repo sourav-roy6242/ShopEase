@@ -6,9 +6,12 @@ import Delivery from "../assets/delivery.png"; // Importing the delivery image
 import imageone from "../assets/image1.jpg";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { userData } = useContext(AppContext);
 
   return (
     <div className="relative min-h-screen flex flex-col justify-center items-center bg-[#e8f7ff]  text-black overflow-hidden">
@@ -111,8 +114,8 @@ const HomePage = () => {
           transition={{ duration: 5, type: "spring", stiffness: 20 }}
         >
           {/* Speech Bubble */}
-          <div className="bg-orange-200 shadow-lg text-black px-4 py-2 rounded-lg text-lg font-semibold absolute -top-12 -left-2">
-            Hello!
+          <div className="bg-orange-200 shadow-lg text-black px-4 py-2 rounded-lg text-lg font-semibold absolute -top-12 -left-20">
+            Hey {userData ? userData.name : "Developer"}!
           </div>
 
           {/* Delivery Boy Image */}
@@ -242,7 +245,7 @@ const HomePage = () => {
       </div>
 
       {/* Footer */}
-     <Footer />
+      <Footer />
     </div>
   );
 };
