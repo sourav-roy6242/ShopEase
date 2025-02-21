@@ -15,6 +15,7 @@ import ResetPassword from "./pages/ResetPassword";
 import UploadPage from "./pages/Uploadpage";
 import SubscriptionPage from "./pages/SubcriptionPage";
 import WorkingDetails from "./pages/WorkingDetails";
+import VideoPage from "./pages/VideoPage.jsx";
 
 import "./App.css";
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/uploadpage" element={<UploadPage />} />
         <Route path="/subscription" element={<SubscriptionPage />} />
         <Route path="/workingdetails" element={<WorkingDetails />} />
+        <Route path="/videos" element={<VideoPage />} />
       </Routes>
     </div>
   );
