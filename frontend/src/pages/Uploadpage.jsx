@@ -2,7 +2,11 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 
+
 const ProductForm = () => {
+
+ 
+
   const [products, setProducts] = useState([
     {
       productName: "",

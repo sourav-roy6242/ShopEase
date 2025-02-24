@@ -46,6 +46,7 @@ import authRouter from "./routes/authRoute.js";
 import userRouter from "./routes/userRoute.js";
 import videoRoute from "./routes/videoRoute.js";
 import checkDiskSpace from "./utils/diskSpace.js";
+import shopRoute from "./routes/shopRoute.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -82,6 +83,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/videos", videoRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/shops", shopRoute);
 
 // ✅ API Test Route
 app.get("/", (req, res) => res.send("API Working"));

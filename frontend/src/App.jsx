@@ -16,6 +16,7 @@ import UploadPage from "./pages/Uploadpage";
 import SubscriptionPage from "./pages/SubcriptionPage";
 import WorkingDetails from "./pages/WorkingDetails";
 import VideoPage from "./pages/VideoPage.jsx";
+import SellerDashboard from "./pages/newHomepage.jsx";
 
 import "./App.css";
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/subscription" element={<SubscriptionPage />} />
         <Route path="/workingdetails" element={<WorkingDetails />} />
         <Route path="/videos" element={<VideoPage />} />
+        <Route path="/dashboard" element={<SellerDashboard />} />
       </Routes>
     </div>
   );
