@@ -50,7 +50,7 @@ const Navbar = () => {
         <ul className="flex ml-110 font-bold text-2xl list-none gap-10">
           <li 
           onClick={() => navigate("/")}
-          className="hover:text-indigo-400 drop-shadow-lg cursor-pointer  transition duration-300">
+          className="hover:text-indigo-300 drop-shadow-lg cursor-pointer  transition duration-300">
             Home
           </li>
           <li
