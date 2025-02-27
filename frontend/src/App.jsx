@@ -18,6 +18,7 @@ import WorkingDetails from "./pages/WorkingDetails";
 import VideoPage from "./pages/VideoPage.jsx";
 import SellerDashboard from "./pages/newHomepage.jsx";
 import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
 
 import "./App.css";
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/videos" element={<VideoPage />} />
         <Route path="/dashboard" element={<SellerDashboard />} />
         <Route path="/confirm-shop-details" element={<ConfirmShopDetails />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
     </div>
   );

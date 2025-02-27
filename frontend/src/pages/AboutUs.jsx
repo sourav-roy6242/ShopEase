@@ -3,7 +3,7 @@ import { useState } from "react";
 import photo from "../assets/members.jpg";
 import aboutus from "../assets/register2.jpg";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 const teamMembers = [
   {
     name: "Sourav Roy",
@@ -74,7 +74,7 @@ const AboutUs = () => {
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
-              className="relative bg-gray-700 p-8 rounded-lg shadow-lg flex flex-col items-center border border-gray-600 hover:shadow-2xl transition"
+              className="relative bg-gray-700 p-8 rounded-lg shadow-lg flex  flex-col items-center border border-gray-600 hover:shadow-2xl transition"
               whileHover={{ scale: 1.05 }}
               onMouseEnter={() => setHoveredMember(index)}
               onMouseLeave={() => setHoveredMember(null)}
