@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Register from "../assets/register.jpg";
 import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/footer";
+import Footer from "../components/Footer.jsx";
 
 const Shopregister = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Shopregister = () => {
         formData
       );
       console.log(response.data);
-      navigate("/dashboard", { state: formData });
+      navigate("/confirm-shop-details", { state: formData });
     } catch (error) {
       console.error("Error:", error.response?.data);
       setError(error.response?.data?.message || "An error occurred.");

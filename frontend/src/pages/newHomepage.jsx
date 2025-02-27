@@ -22,7 +22,7 @@ const SellerDashboard = () => {
   const [subscription, setSubscription] = useState({
     plan: "Silver Plan",
     status: "Active",
-    validity: "2025-03-9", // Ensure this is a valid future date
+    validity: "2025-03-30", // Ensure this is a valid future date
     daysRemaining: 120,
   });
 

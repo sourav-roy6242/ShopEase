@@ -17,6 +17,7 @@ import SubscriptionPage from "./pages/SubcriptionPage";
 import WorkingDetails from "./pages/WorkingDetails";
 import VideoPage from "./pages/VideoPage.jsx";
 import SellerDashboard from "./pages/newHomepage.jsx";
+import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
 
 import "./App.css";
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/workingdetails" element={<WorkingDetails />} />
         <Route path="/videos" element={<VideoPage />} />
         <Route path="/dashboard" element={<SellerDashboard />} />
+        <Route path="/confirm-shop-details" element={<ConfirmShopDetails />} />
       </Routes>
     </div>
   );

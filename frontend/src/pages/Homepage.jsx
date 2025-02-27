@@ -5,7 +5,7 @@ import ShopImage from "../assets/woman.png"; // Importing the girl image
 import Delivery from "../assets/delivery.png"; // Importing the delivery image
 import imageone from "../assets/image1.jpg";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
+import Footer from "../components/Footer.jsx";
 import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
