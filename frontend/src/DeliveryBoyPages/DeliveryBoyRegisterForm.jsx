@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { toast } from "react-toastify";
 import {
   FaUser,
   FaEnvelope,
@@ -8,6 +10,7 @@ import {
   FaBicycle,
   FaIdCard,
   FaFileAlt,
+  FaLock,
 } from "react-icons/fa";
 import { GiSteeringWheel } from "react-icons/gi";
 
@@ -16,18 +19,21 @@ const DeliveryBoyRegisterForm = () => {
     fullName: "",
     email: "",
     phone: "",
-    vehicleType: "",
+    password: "",
+    vehicletype: "",
     licenseNumber: "",
     panNumber: "",
     address: "",
   });
 
+  const [authState, setAuthState] = useState("register"); // New state for auth mode
   const [errors, setErrors] = useState({});
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     // Clear license number if vehicle type changes to cycle
-    if (name === "vehicleType" && value === "cycle") {
+    if (name === "vehicletype" && value === "cycle") {
       setFormData({ ...formData, [name]: value, licenseNumber: "" });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -48,8 +54,13 @@ const DeliveryBoyRegisterForm = () => {
     } else if (!/^\d{10}$/.test(formData.phone)) {
       newErrors.phone = "Phone must be 10 digits";
     }
-    if (!formData.vehicleType)
-      newErrors.vehicleType = "Vehicle Type is required";
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+    if (!formData.vehicletype)
+      newErrors.vehicletype = "Vehicle Type is required";
     if (!formData.panNumber) {
       newErrors.panNumber = "PAN Card is required";
     } else if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.panNumber)) {
@@ -58,7 +69,7 @@ const DeliveryBoyRegisterForm = () => {
     if (!formData.address) newErrors.address = "Address is required";
 
     // License validation based on vehicle type
-    if (formData.vehicleType !== "cycle" && !formData.licenseNumber) {
+    if (formData.vehicletype !== "cycle" && !formData.licenseNumber) {
       newErrors.licenseNumber = "License Number is required for motor vehicles";
     }
 
@@ -66,16 +77,38 @@ const DeliveryBoyRegisterForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      alert("Registration Successful!");
-      console.log("Form Data:", formData);
-    }
-  };
+
 
   const isMotorVehicle =
-    formData.vehicleType && formData.vehicleType !== "cycle";
+    formData.vehicletype && formData.vehicletype !== "cycle";
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (!validateForm()) return;
+  
+      try {
+        const response = await axios.post("http://localhost:4000/api/deliveryboy/register", formData, {
+          headers: { "Content-Type": "application/json" },
+        });
+  
+        if (response.data.success) {
+          toast.success(response.data.message);
+          setFormData({
+            fullName: "",
+            email: "",
+            phone: "",
+            password: "",
+            vehicletype: "",
+            licencenumber: "",
+            panNumber: "",
+            address: "",
+          });
+        }
+      } catch (error) {
+        toast.error(error.response?.data?.message || "Registration failed");
+      }
+    };
+  
 
   return (
     <div>
@@ -83,7 +116,7 @@ const DeliveryBoyRegisterForm = () => {
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center mt-20 py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-2xl transform transition-all duration-300 hover:shadow-3xl">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             🚚 Delivery Boy Registration
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -156,6 +189,29 @@ const DeliveryBoyRegisterForm = () => {
               )}
             </div>
 
+            {/* Password */}
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FaLock className="inline-block mr-2 text-blue-600" />
+                Password <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className={`mt-1 block w-full px-4 py-3 border-2 ${
+                  errors.password ? "border-red-500" : "border-gray-300"
+                } rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
+                placeholder="Enter your password"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1 animate-pulse">
+                  {errors.password}
+                </p>
+              )}
+            </div>
+
             {/* Vehicle Type */}
             <div className="relative">
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -163,8 +219,8 @@ const DeliveryBoyRegisterForm = () => {
                 Vehicle Type <span className="text-red-500">*</span>
               </label>
               <select
-                name="vehicleType"
-                value={formData.vehicleType}
+                name="vehicletype"
+                value={formData.vehicletype}
                 onChange={handleChange}
                 className={`mt-1 block w-full px-4 py-3 border-2 ${
                   errors.vehicleType ? "border-red-500" : "border-gray-300"
@@ -175,9 +231,9 @@ const DeliveryBoyRegisterForm = () => {
                 <option value="scooter">Scooter</option>
                 <option value="cycle">Cycle</option>
               </select>
-              {errors.vehicleType && (
+              {errors.vehicletype && (
                 <p className="text-red-500 text-sm mt-1 animate-pulse">
-                  {errors.vehicleType}
+                  {errors.vehicletype}
                 </p>
               )}
             </div>
@@ -266,7 +322,7 @@ const DeliveryBoyRegisterForm = () => {
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-102 active:scale-95 shadow-lg hover:shadow-xl"
               >
-                 Register Now
+                Register Now
               </button>
             </div>
           </form>
@@ -281,3 +337,5 @@ const DeliveryBoyRegisterForm = () => {
 };
 
 export default DeliveryBoyRegisterForm;
+
+
