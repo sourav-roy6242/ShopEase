@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 const ResetPassword = () => {
   const { backendUrl } = useContext(AppContext);

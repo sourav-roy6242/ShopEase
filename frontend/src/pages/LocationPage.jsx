@@ -225,3 +225,128 @@ const styles = {
 };
 
 export default UserLocation;
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+// import "leaflet/dist/leaflet.css";
+// import L from "leaflet";
+// import axios from "axios";
+
+// // Fix Leaflet marker issue
+// delete L.Icon.Default.prototype._getIconUrl;
+// L.Icon.Default.mergeOptions({
+//   iconRetinaUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+//   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+//   shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+// });
+
+// // Component to smoothly update the map position
+// const MapUpdater = ({ position }) => {
+//   const map = useMap();
+//   useEffect(() => {
+//     map.flyTo(position, 15, { animate: true });
+//   }, [position, map]);
+//   return null;
+// };
+
+// const UserLocation = () => {
+//   const [position, setPosition] = useState([22.5726, 88.3639]); // Default to Kolkata
+//   const [shopAddress, setShopAddress] = useState("");
+//   const [shopName, setShopName] = useState("");
+
+//   useEffect(() => {
+//     // Fetch shop details from backend
+//     const fetchShopDetails = async () => {
+//       try {
+//         const response = await axios.get("http://localhost:4000/api/shop/details"); // Replace with actual API endpoint
+//         const { name, address } = response.data;
+//         setShopName(name);
+//         setShopAddress(address);
+
+//         if (address) {
+//           fetchCoordinates(address);
+//         }
+//       } catch (error) {
+//         console.error("Error fetching shop details:", error);
+//       }
+//     };
+
+//     fetchShopDetails();
+//   }, []);
+
+//   // Fetch coordinates for the shop's address
+//   const fetchCoordinates = async (address) => {
+//     try {
+//       const response = await axios.get(
+//         `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`
+//       );
+//       if (response.data.length > 0) {
+//         setPosition([parseFloat(response.data[0].lat), parseFloat(response.data[0].lon)]);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching coordinates:", error);
+//     }
+//   };
+
+//   return (
+//     <div style={styles.container}>
+//       <h2 style={styles.heading}>{shopName ? `${shopName}'s Location` : "Shop Location"}</h2>
+//       <p style={styles.address}>{shopAddress}</p>
+
+//       <div style={styles.mapWrapper}>
+//         <MapContainer center={position} zoom={15} style={styles.mapContainer}>
+//           <MapUpdater position={position} />
+//           <TileLayer
+//             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+//             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//           />
+//           <Marker position={position}>
+//             <Popup>{shopName || "Shop Location"}</Popup>
+//           </Marker>
+//         </MapContainer>
+//       </div>
+//     </div>
+//   );
+// };
+
+// // Styles
+// const styles = {
+//   container: {
+//     height: "100vh",
+//     width: "100vw",
+//     display: "flex",
+//     flexDirection: "column",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     backgroundColor: "#f4f4f4",
+//     padding: "20px",
+//   },
+//   heading: {
+//     fontSize: "24px",
+//     marginBottom: "10px",
+//   },
+//   address: {
+//     fontSize: "18px",
+//     color: "#555",
+//     marginBottom: "15px",
+//   },
+//   mapWrapper: {
+//     width: "90%",
+//     maxWidth: "1000px",
+//     marginTop: "20px",
+//   },
+//   mapContainer: {
+//     height: "70vh",
+//     width: "100%",
+//     borderRadius: "10px",
+//     overflow: "hidden",
+//     boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+//   },
+// };
+
+// export default UserLocation;
+
+
+

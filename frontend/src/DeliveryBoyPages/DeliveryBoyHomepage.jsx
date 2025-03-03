@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 import {
   FaMotorcycle,
   FaMoneyBillAlt,
@@ -10,6 +11,7 @@ import {
 import { GiCheckMark } from "react-icons/gi"; // Icons for terms and conditions
 
 const DeliveryBoyHome = () => {
+  const navigate = useNavigate();
   return (
   <div>
     <Navbar />
@@ -132,7 +134,7 @@ const DeliveryBoyHome = () => {
       <section className="text-center">
         <button
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-          onClick={() => alert("Redirecting to registration page...")}
+          onClick={() => navigate("/deliveryregister")}
         >
           Register Now
         </button>

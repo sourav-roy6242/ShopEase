@@ -19,7 +19,10 @@ import VideoPage from "./pages/VideoPage.jsx";
 import SellerDashboard from "./pages/newHomepage.jsx";
 import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
-
+import UserLocation from "./pages/LocationPage.jsx";
+import DeliveryBoyDash from "./DeliveryBoyPages/deliveryBoyDashboard.jsx";
+import DeliveryBoyHome from "./DeliveryBoyPages/DeliveryBoyHomepage.jsx";
+import DeliveryBoyRegisterForm from "./DeliveryBoyPages/DeliveryBoyRegisterForm.jsx";
 import "./App.css";
 
 function App() {
@@ -44,6 +47,10 @@ function App() {
         <Route path="/dashboard" element={<SellerDashboard />} />
         <Route path="/confirm-shop-details" element={<ConfirmShopDetails />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/location" element={<UserLocation />} />
+        <Route path="/deliverydash" element={<DeliveryBoyDash />} />
+        <Route path="/deliveryboy" element={<DeliveryBoyHome />} />
+        <Route path="/deliveryregister" element={<DeliveryBoyRegisterForm />} />
       </Routes>
     </div>
   );
