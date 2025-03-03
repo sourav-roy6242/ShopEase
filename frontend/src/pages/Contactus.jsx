@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function ContactUs() {
   const [submitted, setSubmitted] = useState(false);
@@ -9,14 +11,11 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div>
+      <Navbar />
+    <div className="min-h-screen bg-gray-400 text-white">
       {/* Header Section */}
-      <header className="flex justify-between items-center p-6 md:px-12">
-        <h1 className="text-2xl font-bold">Sight</h1>
-        <button className="border border-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">
-          Make an enquiry
-        </button>
-      </header>
+      
 
       {/* Contact Form or Thank You Message */}
       <div className="flex flex-col items-center justify-center px-6 md:px-20">
@@ -150,6 +149,7 @@ export default function ContactUs() {
           </a>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
