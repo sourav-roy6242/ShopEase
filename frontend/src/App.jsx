@@ -24,6 +24,11 @@ import DeliveryBoyDash from "./DeliveryBoyPages/deliveryBoyDashboard.jsx";
 import DeliveryBoyHome from "./DeliveryBoyPages/DeliveryBoyHomepage.jsx";
 import DeliveryBoyRegisterForm from "./DeliveryBoyPages/DeliveryBoyRegisterForm.jsx";
 import "./App.css";
+import CardPayment from "./components/CardPayment.jsx";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("your-public-key-here");
 
 function App() {
   const [count, setCount] = useState(0);
@@ -51,6 +56,13 @@ function App() {
         <Route path="/deliverydash" element={<DeliveryBoyDash />} />
         <Route path="/deliveryboy" element={<DeliveryBoyHome />} />
         <Route path="/deliveryregister" element={<DeliveryBoyRegisterForm />} />
+
+        <Route 
+          path="/card" 
+          element={
+            <Elements stripe={stripePromise}>
+              <CardPayment />
+            </Elements> }/>
       </Routes>
     </div>
   );
