@@ -20,7 +20,7 @@ import SellerDashboard from "./pages/newHomepage.jsx";
 import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import DeliveryBoyDash from "./pages/deliveryBoyDashboard.jsx";
-
+import BuyerHomePage from "./pages/BuyerHomePage.jsx"
 
 import "./App.css";
 
@@ -47,6 +47,7 @@ function App() {
         <Route path="/confirm-shop-details" element={<ConfirmShopDetails />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/deliverydash" element={<DeliveryBoyDash/>} />
+        <Route path="/buyerhome" element={<BuyerHomePage/>} />
        
       </Routes>
     </div>
