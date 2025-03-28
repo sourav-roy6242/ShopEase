@@ -1,27 +1,72 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import ShopImage from "../assets/woman.png"; // Importing the girl image
-import Delivery from "../assets/delivery.png"; // Importing the delivery image
+import { useState, useEffect, useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ShopImage from "../assets/woman.png";
+import Delivery from "../assets/delivery.png";
 import imageone from "../assets/image1.jpg";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.jsx";
 import { AppContext } from "../context/AppContext";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+
+
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userData } = useContext(AppContext);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-   const navigate = useNavigate();
+  useEffect(() => {
+    gsap.fromTo(
+      ".loading-text span",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        ease: "power2.out",
+        duration: 1,
+      }
+    );
+
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    
-    <div className="relative min-h-screen flex flex-col justify-center items-center bg-[#e8f7ff]  text-black overflow-hidden">
-      {/* Small Floating Blocks Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array(40)
+    <div className="relative min-h-screen bg-[#e8f7ff] text-black overflow-hidden">
+      <AnimatePresence mode='wait'>
+        {loading ? (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 flex justify-center items-center bg-black z-50"
+          >
+            <h1 className="loading-text text-white text-6xl font-bold flex space-x-2">
+              {[..."ShopEase"].map((letter, index) => (
+                <motion.span key={index} className="inline-block">
+                  {letter}
+                </motion.span>
+              ))}
+            </h1>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative min-h-screen flex flex-col"
+          >
+            {/* Floating Background Elements */}
+            <div className="absolute inset-0 overflow-hidden">
+           {Array(40)
           .fill(0)
           .map((_, index) => (
             <motion.div
@@ -118,7 +163,7 @@ const HomePage = () => {
           transition={{ duration: 5, type: "spring", stiffness: 20 }}
         >
           {/* Speech Bubble */}
-          <div className="bg-orange-200 shadow-lg text-black px-4 py-2 rounded-lg text-lg font-semibold absolute -top-12 -left-20">
+          <div className="bg-orange-200 shadow-lg text-black px-4 py-2 rounded-lg text-lg font-semibold absolute -top-8 -left-18">
             Hey {userData ? userData.name : "Developer"}!
           </div>
 
@@ -254,17 +299,15 @@ const HomePage = () => {
           </button>
         </motion.div>
       </div>
-
-      {/* Footer */}
-      <Footer />
+          
+            <Footer />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default HomePage;
 
-
-
-
-//! New Homepage
 

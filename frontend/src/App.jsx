@@ -23,6 +23,8 @@ import UserLocation from "./pages/LocationPage.jsx";
 import DeliveryBoyDash from "./DeliveryBoyPages/deliveryBoyDashboard.jsx";
 import DeliveryBoyHome from "./DeliveryBoyPages/DeliveryBoyHomepage.jsx";
 import DeliveryBoyRegisterForm from "./DeliveryBoyPages/DeliveryBoyRegisterForm.jsx";
+import UserHomePage from "./pages/userPage.jsx";
+import BuyerHomePage from "./pages/BuyerHomePage.jsx";
 import "./App.css";
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
         <Route path="/deliverydash" element={<DeliveryBoyDash />} />
         <Route path="/deliveryboy" element={<DeliveryBoyHome />} />
         <Route path="/deliveryregister" element={<DeliveryBoyRegisterForm />} />
+        <Route path="/userhome" element={<UserHomePage />} />
+        <Route path="/buyerhome" element={<BuyerHomePage />} />
       </Routes>
     </div>
   );
