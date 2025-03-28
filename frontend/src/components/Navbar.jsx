@@ -152,7 +152,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50">
+    <div className="w-full fixed top-0 left-0 ">
       <div className="w-full flex justify-between items-center p-4 sm:p-6 sm:px-12 backdrop-blur-md">
         <div className="flex items-center gap-12">
           <h2 className="text-2xl font-bold w-28 sm:w-32">ShopEase</h2>
