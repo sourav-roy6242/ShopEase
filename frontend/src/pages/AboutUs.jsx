@@ -12,7 +12,7 @@ const teamMembers = [
     message: "Hello, I am Sourav, CEO of this company",
   },
   {
-    name: "Sunabha Panda",
+    name: "Sunabha Panda boss",
     role: "CTO",
     image: "charlie.jpg",
     message: "Warakkam, I am Sunabha, CTO of this company",
