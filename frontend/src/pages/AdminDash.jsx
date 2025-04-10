@@ -1,349 +1,403 @@
-import { useState } from 'react';
-import { 
-  FaShieldAlt, FaHome, FaChartLine, FaShoppingCart, 
-  FaUsers, FaBox, FaCog, FaBell, FaQuestionCircle,
-  FaSearch, FaDollarSign, FaChartBar, FaShoppingBag
-} from 'react-icons/fa';
+// import React from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import heroVideo from "../assets/hero.mp4"; // ✅ Correct video import from src/assets
+// import Navbar from "../components/Navbar";
+// import AboutUs from "./AboutUs";
+// import ContactUs from "./Contactus";
 
-const AdminDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState('dashboard');
+// export default function AdminPage() {
+//   const [showHeading, setShowHeading] = React.useState(true);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+//   React.useEffect(() => {
+//     const interval = setInterval(() => {
+//       setShowHeading(prev => !prev);
+//     }, 4000); // Switch text every 4 seconds
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+
+//     <div className=" text-white bg-gray-700">
+//       <Navbar />
+//     <div className="min-h-screen flex flex-col">
+//       {/* Header */}
+        
+
+//       {/* Main Content */}
+//       <main className="flex flex-1">
+       
+
+//         {/* Main Section */}
+//         <section className="flex-1 p-6">
+//           {/* Welcome Video Section */}
+//           <div className="relative w-full h-[600px] rounded-xl mt-20 overflow-hidden shadow-lg mb-8">
+//             <video
+//               autoPlay
+//               muted
+//               loop
+//               playsInline
+//               className="absolute top-0 left-0 w-full h-full object-cover z-0"
+//             >
+//               <source src={heroVideo} type="video/mp4" />
+//               Your browser does not support the video tag.
+//             </video>
+//             <div className="absolute inset-0 flex flex-col justify-center items-center z-10">
+//               <AnimatePresence mode="wait">
+//                 {showHeading ? (
+//                   <motion.h2
+//                     key="heading"
+//                     className="text-5xl md:text-7xl font-black text-white mb-4 tracking-widest"
+//                     initial={{ opacity: 1, x: -100 }}
+//                     animate={{ opacity: 1, x: 5 }}
+//                     exit={{ opacity: 0, x: 100 }}
+//                     transition={{  duration: 1 }}
+//                   >
+//                     SHOPEASE
+//                   </motion.h2>
+//                 ) : (
+//                   <motion.h2  
+//                     key="subheading"
+//                     className="text-4xl md:text-5xl text-white px-6 py-3 rounded-lg "
+//                     initial={{ opacity: 0, x: -100 }}
+//                     animate={{ opacity: 1, x: 0 }}
+//                     exit={{ opacity: 0, x: 100 }}
+//                     transition={{ duration: 1 }}
+//                   >
+//                     Hi, Admin — You are welcome in the admin page
+//                   </motion.h2>
+//                 )}
+//               </AnimatePresence>
+//             </div>
+//           </div>
+
+//           {/* Tracking Buttons */}
+//           <div className="flex justify-center space-x-6 mb-8">
+//             <button className="rounded-full px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white text-lg font-semibold shadow-md transition duration-200">
+//               Track Seller
+//             </button>
+//             <button className="rounded-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white text-lg font-semibold shadow-md transition duration-200">
+//               Track Buyer
+//             </button>
+//             <button className="rounded-full px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white text-lg font-semibold shadow-md transition duration-200">
+//               Track Orders
+//             </button>
+//           </div>
+
+//           {/* About Section */}
+//        <AboutUs />
+
+//           {/* Contact Section */}
+//          <ContactUs />
+//         </section>
+//       </main>
+
+//       {/* Footer */}
+//       <footer className="bg-gray-800 text-white text-center p-4">
+//         &copy; 2025 Shopease. All rights reserved.
+//       </footer>
+//     </div>
+//     </div>
+//   );
+// }
+
+
+
+
+// import React from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import heroVideo from "../assets/hero.mp4";
+// import Navbar from "../components/Navbar";
+// import AboutUs from "./AboutUs";
+// import ContactUs from "./Contactus";
+// import { FaUserShield, FaMapMarkedAlt, FaShippingFast } from "react-icons/fa";
+// import "@fontsource/orbitron"; // Install via: npm install @fontsource/orbitron
+
+
+// function TrackingCards() {
+//   return (
+//     <div className="relative my-16 font-[Orbitron]">
+//       {/* 🔮 Animated SVG Overlay */}
+//       <svg className="absolute inset-0 w-full h-full z-0" preserveAspectRatio="xMidYMid slice">
+//         <defs>
+//           <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+//             <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.4" />
+//             <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
+//           </radialGradient>
+//         </defs>
+//         <rect width="100%" height="100%" fill="url(#glow)" />
+//       </svg>
+
+//       {/* 🪐 Card Grid */}
+//       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-6 py-12 relative z-10">
+//         {trackingCards.map((card, index) => (
+//           <motion.div
+//             key={index}
+//             initial={{ opacity: 0, y: 50 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: index * 0.2 }}
+//             whileHover={{ scale: 1.05 }}
+//             className="relative group rounded-3xl p-6 bg-[#1e293b]/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_0_12px_rgba(255,255,255,0.08),0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-500 overflow-hidden h-[520px] flex flex-col justify-between"
+//           >
+//             {/* Gradient Blurs */}
+//             <div className="absolute w-48 h-48 bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] rounded-full blur-3xl opacity-20 group-hover:opacity-40 top-0 left-0 transition-opacity duration-500" />
+//             <div className="absolute w-32 h-32 bg-gradient-to-tr from-[#f43f5e] to-[#facc15] rounded-full blur-2xl opacity-20 bottom-0 right-0 group-hover:opacity-40 transition-opacity duration-500" />
+
+//             {/* Content */}
+//             <div className="relative z-10">
+//               <div className="mb-4">{card.icon}</div>
+//               <h3 className="text-xl md:text-2xl font-bold text-white tracking-widest mb-2">
+//                 {card.title}
+//               </h3>
+//               <p className="text-sm text-gray-300 font-light leading-relaxed">
+//                 {card.description}
+//               </p>
+//             </div>
+
+//             {/* View Button */}
+//             <motion.button
+//               whileHover={{
+//                 scale: 1.1,
+//                 rotate: [0, 1, -1, 0],
+//                 backgroundColor: "rgba(255,255,255,0.08)",
+//                 boxShadow: "0 0 16px rgba(255,255,255,0.3)",
+//               }}
+//               whileTap={{ scale: 0.95 }}
+//               className="mt-6 self-start px-3 py-1.5 rounded-full text-xs font-semibold text-white border border-white/20 backdrop-blur-md bg-white/5 hover:bg-white/10 transition-all duration-300"
+//             >
+//               View
+//             </motion.button>
+//           </motion.div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// {/* Tracking Cards */}
+// <TrackingCards />
+
+//             {/* Tracking Cards */}
+// // 🔥 Ultimate Futuristic Card Design
+// function TrackingCards() {
+//   return (
+//     <div className="relative my-16 font-[Orbitron]">
+//       {/* 🔮 Animated SVG Overlay */}
+//       <svg className="absolute inset-0 w-full h-full z-0" preserveAspectRatio="xMidYMid slice">
+//         <defs>
+//           <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+//             <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.4" />
+//             <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
+//           </radialGradient>
+//         </defs>
+//         <rect width="100%" height="100%" fill="url(#glow)" />
+//       </svg>
+
+//       {/* 🪐 Card Grid */}
+//       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-6 py-12 relative z-10">
+//         {trackingCards.map((card, index) => (
+//           <motion.div
+//             key={index}
+//             initial={{ opacity: 0, y: 50 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: index * 0.2 }}
+//             whileHover={{ scale: 1.05 }}
+//             className="relative group rounded-3xl p-6 bg-[#1e293b]/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_0_12px_rgba(255,255,255,0.08),0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-500 overflow-hidden h-[520px] flex flex-col justify-between"
+//           >
+//             {/* Gradient Blurs */}
+//             <div className="absolute w-48 h-48 bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] rounded-full blur-3xl opacity-20 group-hover:opacity-40 top-0 left-0 transition-opacity duration-500" />
+//             <div className="absolute w-32 h-32 bg-gradient-to-tr from-[#f43f5e] to-[#facc15] rounded-full blur-2xl opacity-20 bottom-0 right-0 group-hover:opacity-40 transition-opacity duration-500" />
+
+//             {/* Content */}
+//             <div className="relative z-10">
+//               <div className="mb-4">{card.icon}</div>
+//               <h3 className="text-xl md:text-2xl font-bold text-white tracking-widest mb-2">
+//                 {card.title}
+//               </h3>
+//               <p className="text-sm text-gray-300 font-light leading-relaxed">
+//                 {card.description}
+//               </p>
+//             </div>
+
+//             {/* View Button */}
+//             <motion.button
+//               whileHover={{
+//                 scale: 1.1,
+//                 rotate: [0, 1, -1, 0],
+//                 backgroundColor: "rgba(255,255,255,0.08)",
+//                 boxShadow: "0 0 16px rgba(255,255,255,0.3)",
+//               }}
+//               whileTap={{ scale: 0.95 }}
+//               className="mt-6 self-start px-3 py-1.5 rounded-full text-xs font-semibold text-white border border-white/20 backdrop-blur-md bg-white/5 hover:bg-white/10 transition-all duration-300"
+//             >
+//               View
+//             </motion.button>
+//           </motion.div>
+//         ))}
+//       </div>
+//     </div>
+
+
+//             {/* About & Contact */}
+//             <AboutUs />
+//             <ContactUs />
+//           </section>
+//         </main>
+
+//         <footer className="bg-gray-800 text-white text-center p-4">
+//           &copy; 2025 Shopease. All rights reserved.
+//         </footer>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+import React from "react";
+import { motion } from "framer-motion";
+import heroVideo from "../assets/hero.mp4";
+import Navbar from "../components/Navbar";
+import AboutUs from "./AboutUs";
+import ContactUs from "./Contactus";
+import { FaUserShield, FaMapMarkedAlt, FaShippingFast } from "react-icons/fa";
+import "@fontsource/orbitron"; // Make sure this is installed!
+
+const trackingCards = [
+  {
+    title: "Track Seller",
+    icon: <FaUserShield size={36} className="text-[#6EE7B7] group-hover:animate-pulse" />,
+    description: "Monitor seller verification, location logs and online delivery consistency.",
+  },
+  {
+    title: "Track Buyer",
+    icon: <FaMapMarkedAlt size={36} className="text-[#93C5FD] group-hover:animate-pulse" />,
+    description: "Track buyer activity and current map location for streamlined support.",
+  },
+  {
+    title: "Track Orders",
+    icon: <FaShippingFast size={36} className="text-[#FCA5A5]  group-hover:animate-pulse" />,
+    description: "Follow real-time delivery routes, current ETA and package statuses.",
+  },
+];
+
+function TrackingCards() {
+  const cardColors = [
+    "from-[#0ea5e9] to-[#38bdf8]",
+    "from-[#a78bfa] to-[#c084fc]",
+    "from-[#fb7185] to-[#fda4af]",
+  ];
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <div className={`bg-white shadow-lg z-10 transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-20'}`}>
-        <div className="p-5 flex items-center border-b border-gray-100">
-          <FaShieldAlt className="text-indigo-600 text-2xl" />
-          {sidebarOpen && <h3 className="text-indigo-600 font-semibold text-lg ml-3">Admin Panel</h3>}
+    <section className="relative w-full py-20 px-6 font-[Orbitron] bg-[#020617]">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
+            Smart Tracking System
+          </h2>
+          <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
+            Stay updated with real-time tracking of sellers, buyers, and orders — all in one futuristic dashboard.
+          </p>
         </div>
-        
-        <div className="p-4">
-          <h4 className={`text-xs uppercase text-gray-400 tracking-wider mb-3 ${!sidebarOpen && 'hidden'}`}>Main</h4>
-          <ul>
-            <li>
-              <button 
-                onClick={() => setActiveTab('dashboard')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'dashboard' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaHome className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Dashboard</span>}
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => setActiveTab('analytics')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'analytics' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaChartLine className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Analytics</span>}
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => setActiveTab('orders')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'orders' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaShoppingCart className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Orders</span>}
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => setActiveTab('users')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'users' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaUsers className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Users</span>}
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => setActiveTab('products')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'products' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaBox className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Products</span>}
-              </button>
-            </li>
-          </ul>
 
-          {sidebarOpen && <h4 className="text-xs uppercase text-gray-400 tracking-wider mt-6 mb-3">Management</h4>}
-          <ul>
-            <li>
-              <button 
-                onClick={() => setActiveTab('settings')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'settings' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
+        {/* Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-30 relative z-10">
+          {trackingCards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.2 }}
+              whileHover={{
+                scale: 1.05,
+                rotate: [0, 1, -1, 0],
+                boxShadow: "0 10px 25px rgba(255, 255, 255, 0.2)",
+              }}
+              className={`relative group rounded-3xl p-6 backdrop-blur-xl border border-white/10 transition-all duration-500 overflow-hidden h-[520px] flex flex-col justify-between bg-gradient-to-br ${cardColors[index]} shadow-[0_8px_24px_rgba(0,0,0,0.4)]`}
+            >
+              {/* Glow blobs */}
+              <div className="absolute w-48 h-48 bg-white/10 rounded-full blur-3xl opacity-30 top-0 left-0 group-hover:opacity-50 transition-opacity duration-500" />
+              <div className="absolute w-32 h-32 bg-white/10 rounded-full blur-2xl opacity-30 bottom-0 right-0 group-hover:opacity-50 transition-opacity duration-500" />
+
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="mb-6">{card.icon}</div>
+                <h3 className="text-2xl font-bold text-white tracking-wide mb-3 drop-shadow-sm">
+                  {card.title}
+                </h3>
+                <p className="text-gray-100 text-sm leading-relaxed font-light">
+                  {card.description}
+                </p>
+              </div>
+
+              {/* View Button */}
+              <motion.button
+                whileHover={{
+                  scale: 1.1,
+                  rotate: [0, 1, -1, 0],
+                  backgroundColor: "rgba(255,255,255,0.1)",
+                  boxShadow: "0 0 16px rgba(255,255,255,0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 self-start px-4 py-2 rounded-full text-xs font-semibold text-white border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
               >
-                <FaCog className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Settings</span>}
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => setActiveTab('notifications')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'notifications' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaBell className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Notifications</span>}
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => setActiveTab('support')}
-                className={`flex items-center w-full p-3 rounded-lg mb-1 ${activeTab === 'support' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'}`}
-              >
-                <FaQuestionCircle className="text-lg" />
-                {sidebarOpen && <span className="ml-3">Support</span>}
-              </button>
-            </li>
-          </ul>
+                View
+              </motion.button>
+            </motion.div>
+          ))}
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* Main Content */}
-      <div className="flex-1 overflow-auto">
-        {/* Top Navigation */}
-        <div className="bg-white shadow-sm p-4 flex justify-between items-center">
-          <button 
-            onClick={toggleSidebar}
-            className="p-2 rounded-lg hover:bg-gray-100"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
 
-          <div className="relative w-96">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FaSearch className="text-gray-400" />
-            </div>
-            <input 
-              type="text" 
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
-              placeholder="Search..."
-            />
-          </div>
+export default function AdminPage() {
+  return (
+    <div className="relative min-h-screen bg-black text-white font-[Orbitron]">
+      {/* 🎥 Hero Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute w-full h-full object-cover -z-10 opacity-10"
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
 
-          <div className="flex items-center space-x-6">
-            <div className="relative">
-              <FaBell className="text-gray-600 text-xl cursor-pointer" />
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-            </div>
-            <div className="flex items-center">
-              <img 
-                src="https://randomuser.me/api/portraits/women/44.jpg" 
-                alt="User" 
-                className="h-10 w-10 rounded-full object-cover"
-              />
-              {sidebarOpen && (
-                <div className="ml-3">
-                  <h4 className="text-sm font-medium text-gray-700">Jane Doe</h4>
-                  <p className="text-xs text-gray-500">Admin</p>
-                </div>
-              )}
-            </div>
-          </div>
+      {/* 🌐 Navbar */}
+      <Navbar />
+
+       {/* Hero Section */}
+       <section className="relative h-screen w-full overflow-hidden">
+        <video
+          className="absolute inset-0 object-cover w-full h-full"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        <div className="relative z-10 h-full flex items-center justify-center bg-black/40">
+          <h1 className="text-white text-5xl md:text-7xl font-bold font-[Orbitron] drop-shadow-lg">
+            Welcome to Shopease Admin
+          </h1>
         </div>
+      </section>
 
-        {/* Dashboard Content */}
-        <div className="p-6">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-gray-500 text-sm">Total Revenue</p>
-                  <h3 className="text-2xl font-bold mt-1">$12,345</h3>
-                </div>
-                <div className="p-3 rounded-lg bg-indigo-50 text-indigo-600">
-                  <FaDollarSign className="text-xl" />
-                </div>
-              </div>
-            </div>
+      {/* 🔍 Tracking Cards */}
+      <main className="flex flex-col items-center justify-center">
+        <TrackingCards />
+        <AboutUs />
+        <ContactUs />
+      </main>
 
-            <div className="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-gray-500 text-sm">Total Users</p>
-                  <h3 className="text-2xl font-bold mt-1">1,234</h3>
-                </div>
-                <div className="p-3 rounded-lg bg-blue-50 text-blue-500">
-                  <FaUsers className="text-xl" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-gray-500 text-sm">Total Orders</p>
-                  <h3 className="text-2xl font-bold mt-1">567</h3>
-                </div>
-                <div className="p-3 rounded-lg bg-amber-50 text-amber-500">
-                  <FaShoppingBag className="text-xl" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-gray-500 text-sm">Conversion Rate</p>
-                  <h3 className="text-2xl font-bold mt-1">89%</h3>
-                </div>
-                <div className="p-3 rounded-lg bg-green-50 text-green-500">
-                  <FaChartBar className="text-xl" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content Area */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Recent Orders */}
-            <div className="bg-white rounded-lg shadow p-6 lg:col-span-2">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-semibold">Recent Orders</h3>
-                <a href="#" className="text-indigo-600 text-sm hover:underline">View All</a>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="min-w-full">
-                  <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="text-left text-xs text-gray-500 uppercase tracking-wider py-3">Order ID</th>
-                      <th className="text-left text-xs text-gray-500 uppercase tracking-wider py-3">Customer</th>
-                      <th className="text-left text-xs text-gray-500 uppercase tracking-wider py-3">Date</th>
-                      <th className="text-left text-xs text-gray-500 uppercase tracking-wider py-3">Amount</th>
-                      <th className="text-left text-xs text-gray-500 uppercase tracking-wider py-3">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentOrders.map((order, index) => (
-                      <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
-                        <td className="py-4 text-sm font-medium text-gray-700">#{order.id}</td>
-                        <td className="py-4">
-                          <div className="flex items-center">
-                            <img src={order.avatar} alt={order.name} className="h-8 w-8 rounded-full mr-3" />
-                            <div>
-                              <p className="text-sm font-medium text-gray-700">{order.name}</p>
-                              <p className="text-xs text-gray-500">{order.email}</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="py-4 text-sm text-gray-500">{order.date}</td>
-                        <td className="py-4 text-sm font-medium text-gray-700">${order.amount}</td>
-                        <td className="py-4">
-                          <span className={`px-2 py-1 text-xs rounded-full ${order.status === 'Completed' ? 'bg-green-100 text-green-800' : order.status === 'Pending' ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'}`}>
-                            {order.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-semibold">Recent Activity</h3>
-                <a href="#" className="text-indigo-600 text-sm hover:underline">View All</a>
-              </div>
-
-              <div className="space-y-4">
-                {recentActivities.map((activity, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className={`p-2 rounded-full mr-4 ${activity.type === 'order' ? 'bg-indigo-100 text-indigo-600' : activity.type === 'user' ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'}`}>
-                      {activity.type === 'order' ? <FaShoppingBag /> : activity.type === 'user' ? <FaUsers /> : <FaBell />}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-sm font-medium text-gray-700">{activity.title}</h4>
-                      <p className="text-xs text-gray-500 mt-1">{activity.description}</p>
-                      <p className="text-xs text-gray-400 mt-1">{activity.time}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* 🦾 Footer */}
+      <footer className="bg-gray-800 text-white text-center p-4">
+        &copy; 2025 Shopease. All rights reserved.
+      </footer>
     </div>
   );
-};
-
-// Sample data
-const recentOrders = [
-  {
-    id: 'ORD-123',
-    name: 'John Smith',
-    email: 'john@example.com',
-    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-    date: 'May 15, 2023',
-    amount: '125.00',
-    status: 'Completed'
-  },
-  {
-    id: 'ORD-124',
-    name: 'Sarah Johnson',
-    email: 'sarah@example.com',
-    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-    date: 'May 14, 2023',
-    amount: '89.50',
-    status: 'Pending'
-  },
-  {
-    id: 'ORD-125',
-    name: 'Michael Brown',
-    email: 'michael@example.com',
-    avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
-    date: 'May 14, 2023',
-    amount: '245.75',
-    status: 'Completed'
-  },
-  {
-    id: 'ORD-126',
-    name: 'Emily Davis',
-    email: 'emily@example.com',
-    avatar: 'https://randomuser.me/api/portraits/women/63.jpg',
-    date: 'May 13, 2023',
-    amount: '67.30',
-    status: 'Cancelled'
-  },
-];
-
-const recentActivities = [
-  {
-    type: 'order',
-    title: 'New order received',
-    description: 'Order #ORD-128 from John Doe',
-    time: '2 hours ago'
-  },
-  {
-    type: 'user',
-    title: 'New user registered',
-    description: 'Sarah Johnson joined the platform',
-    time: '5 hours ago'
-  },
-  {
-    type: 'notification',
-    title: 'System update',
-    description: 'New version 2.3.0 is available',
-    time: '1 day ago'
-  },
-  {
-    type: 'order',
-    title: 'Order completed',
-    description: 'Order #ORD-125 has been delivered',
-    time: '2 days ago'
-  },
-];
-
-export default AdminDashboard;
+}
