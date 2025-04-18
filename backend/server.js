@@ -1,3 +1,8 @@
+
+
+
+
+
 // import express from "express";
 // import dotenv from "dotenv";
 // import cookieParser from "cookie-parser";
@@ -6,6 +11,8 @@
 // import authRouter from "./routes/authRoute.js";
 // import userRouter from "./routes/userRoute.js";
 // import videoRoute from "./routes/videoRoute.js";
+// import checkDiskSpace from "./utils/diskSpace.js";
+// import shopRoute from "./routes/shopRoute.js";
 // import path from "path";
 // import { fileURLToPath } from "url";
 
@@ -16,23 +23,73 @@
 
 // const app = express();
 // const port = process.env.PORT || 4000;
-// connectDB();
 
-// const allowedOrigins = ["http://localhost:5173"];
+// // ✅ Connect to MongoDB with error handling
+// connectDB().catch((err) => {
+//   console.error("MongoDB connection failed:", err);
+// });
+// checkDiskSpace();
+// // ✅ Allow multiple origins for development
+// const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+
+
+
+// // Geocode API Route
+// app.get("/geocode", async (req, res) => {
+//   const address = req.query.address;
+
+//   if (!address) {
+//     return res.status(400).json({ error: "Address is required" });
+//   }
+
+//   try {
+//     // Fetch coordinates from OpenStreetMap Nominatim API
+//     const response = await axios.get(
+//       `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`
+//     );
+
+//     if (response.data.length === 0) {
+//       return res.status(404).json({ error: "Location not found" });
+//     }
+
+//     res.json(response.data);
+//   } catch (error) {
+//     console.error("Error fetching location:", error.message);
+//     res.status(500).json({ error: "Internal Server Error", details: error.message });
+//   }
+// });
+
 
 // app.use(express.json());
+// app.use(express.urlencoded({ extended: true })); // ✅ Parse URL-encoded data
 // app.use(cookieParser());
-// app.use(cors({ origin: allowedOrigins, credentials: true }));
-// app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve uploaded videos
+// app.use(
+//   cors({
+//     origin: allowedOrigins,
+//     credentials: true,
+//   })
+// );
 
-// // Routes
+// // ✅ Serve uploaded videos
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// // ✅ Routes
 // app.use("/api/videos", videoRoute);
-// //Api endpoints
-// app.get("/", (req, res) => res.send("API Working"));
 // app.use("/api/auth", authRouter);
 // app.use("/api/user", userRouter);
+// app.use("/api/shops", shopRoute);
 
-// app.listen(port, () => console.log(`Server listening on port ${port}`));
+// // ✅ API Test Route
+// app.get("/", (req, res) => res.send("API Working"));
+
+// // ✅ Global Error Handler (for unexpected issues)
+// app.use((err, req, res, next) => {
+//   console.error("Unhandled Error:", err);
+//   res.status(500).json({ error: "Internal Server Error" });
+// });
+
+// // ✅ Start Server
+// app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
 
 
 
@@ -47,6 +104,7 @@ import userRouter from "./routes/userRoute.js";
 import videoRoute from "./routes/videoRoute.js";
 import checkDiskSpace from "./utils/diskSpace.js";
 import shopRoute from "./routes/shopRoute.js";
+import axios from "axios"; // ✅ Fixed missing import
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -60,12 +118,15 @@ const port = process.env.PORT || 4000;
 
 // ✅ Connect to MongoDB with error handling
 connectDB().catch((err) => {
-  console.error("MongoDB connection failed:", err);
+  console.error("❌ MongoDB connection failed:", err);
 });
+
 checkDiskSpace();
+
 // ✅ Allow multiple origins for development
 const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
 
+// ✅ Apply middleware before defining routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // ✅ Parse URL-encoded data
 app.use(cookieParser());
@@ -79,6 +140,37 @@ app.use(
 // ✅ Serve uploaded videos
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// ✅ Geocode API Route
+app.get("/geocode", async (req, res) => {
+  const address = req.query.address;
+
+  if (!address) {
+    console.log("❌ No address provided!");
+    return res.status(400).json({ error: "Address is required" });
+  }
+
+  try {
+    console.log(`🔍 Searching for address: ${address}`);
+
+    const response = await axios.get(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`
+    );
+
+    console.log("📍 API Response:", response.data);
+
+    if (response.data.length === 0) {
+      console.log("❌ Location not found!");
+      return res.status(404).json({ error: "Location not found" });
+    }
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("❌ Error fetching location:", error.message);
+    console.error("⚠️ Full error:", error);
+    res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
+});
+
 // ✅ Routes
 app.use("/api/videos", videoRoute);
 app.use("/api/auth", authRouter);
@@ -90,7 +182,7 @@ app.get("/", (req, res) => res.send("API Working"));
 
 // ✅ Global Error Handler (for unexpected issues)
 app.use((err, req, res, next) => {
-  console.error("Unhandled Error:", err);
+  console.error("❌ Unhandled Error:", err);
   res.status(500).json({ error: "Internal Server Error" });
 });
 
