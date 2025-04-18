@@ -26,6 +26,7 @@ import DeliveryBoyRegisterForm from "./DeliveryBoyPages/DeliveryBoyRegisterForm.
 import UserHomePage from "./pages/userPage.jsx";
 import BuyerHomePage from "./pages/BuyerHomePage.jsx";
 import AdminDashboard from "./pages/AdminDash.jsx";
+import ChatBot from "./ChatBot/ChatBot.jsx";
 import "./App.css";
 
 function App() {
@@ -56,8 +57,8 @@ function App() {
         <Route path="/deliveryregister" element={<DeliveryBoyRegisterForm />} />
         <Route path="/userhome" element={<UserHomePage />} />
         <Route path="/buyerhome" element={<BuyerHomePage />} />
-        <Route path="/admindash" element={<AdminDashboard />}
-        />
+        <Route path="/admindash" element={<AdminDashboard />}/>
+        <Route path="/chatbot" element={<ChatBot />} />
       </Routes>
     </div>
   );
