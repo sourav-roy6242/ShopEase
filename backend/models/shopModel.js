@@ -10,7 +10,6 @@ const shopSchema = new Schema({
     required: true,
   },
   phoneNumber: {
-    // Updated from "phone"
     type: String,
     required: true,
   },
@@ -20,7 +19,6 @@ const shopSchema = new Schema({
     unique: true,
   },
   shopAddress: {
-    // Updated from "address"
     type: String,
     required: true,
   },
@@ -28,6 +26,12 @@ const shopSchema = new Schema({
     type: String,
     required: true,
   },
+  products: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
 
 export default model("Shop", shopSchema);

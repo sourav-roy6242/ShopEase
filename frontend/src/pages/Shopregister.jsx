@@ -23,21 +23,71 @@ const Shopregister = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+ 
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:4000/api/shops/register",
+  //       formData
+  //     );
+  //     console.log(response.data);
+  //     navigate("/confirm-shop-details", { state: formData });
+  //     console.log("Sending shop data to backend:", shopData);
+  //   } catch (error) {
+  //     console.error("Error:", error.response?.data);
+  //     setError(error.response?.data?.message || "An error occurred.");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // ✅ Get values from formData correctly
+    const shopData = {
+      shopName: formData.shopName,
+      ownerName: formData.ownerName,
+      phoneNumber: formData.phoneNumber,
+      email: formData.email,
+      shopAddress: formData.shopAddress,
+      category: formData.category,
+    };
+  
+    console.log("Sending shop data to backend:", shopData);
+  
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/shops/register",
-        formData
-      );
-      console.log(response.data);
+      const response = await fetch("http://localhost:4000/api/shops/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(shopData),
+      });
+  
+      const data = await response.json();
+      console.log("Response from backend:", data);
+  
+      if (!response.ok) {
+        console.error("Registration failed:", data);
+        alert(`Error: ${data.message}`);
+        return;
+      }
+  
+      if (data.shop && data.shop._id) {
+        localStorage.setItem("shopId", data.shop._id);
+        console.log("Stored shopId in localStorage:", data.shop._id);
+      } else {
+        console.error("shopId is missing in response:", data);
+      }
+  
       navigate("/confirm-shop-details", { state: formData });
     } catch (error) {
-      console.error("Error:", error.response?.data);
-      setError(error.response?.data?.message || "An error occurred.");
+      console.error("Error registering shop:", error);
     }
   };
-
+  
+  
   return (
     <div>
       
@@ -164,3 +214,5 @@ const Shopregister = () => {
 };
 
 export default Shopregister;
+
+

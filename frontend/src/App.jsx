@@ -19,10 +19,22 @@ import VideoPage from "./pages/VideoPage.jsx";
 import SellerDashboard from "./pages/newHomepage.jsx";
 import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
+<<<<<<< HEAD
 import DeliveryBoyDash from "./pages/deliveryBoyDashboard.jsx";
+import BuyerHomePage from "./pages/BuyerHomePage.jsx"
 
-
+=======
+import UserLocation from "./pages/LocationPage.jsx";
+import DeliveryBoyDash from "./DeliveryBoyPages/deliveryBoyDashboard.jsx";
+import DeliveryBoyHome from "./DeliveryBoyPages/DeliveryBoyHomepage.jsx";
+import DeliveryBoyRegisterForm from "./DeliveryBoyPages/DeliveryBoyRegisterForm.jsx";
+>>>>>>> b83690c36e00d855714f7190b19325cfaf33e49e
 import "./App.css";
+import CardPayment from "./components/CardPayment.jsx";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("your-public-key-here");
 
 function App() {
   const [count, setCount] = useState(0);
@@ -46,8 +58,23 @@ function App() {
         <Route path="/dashboard" element={<SellerDashboard />} />
         <Route path="/confirm-shop-details" element={<ConfirmShopDetails />} />
         <Route path="/payment" element={<PaymentPage />} />
+<<<<<<< HEAD
         <Route path="/deliverydash" element={<DeliveryBoyDash/>} />
+        <Route path="/buyerhome" element={<BuyerHomePage/>} />
        
+=======
+        <Route path="/location" element={<UserLocation />} />
+        <Route path="/deliverydash" element={<DeliveryBoyDash />} />
+        <Route path="/deliveryboy" element={<DeliveryBoyHome />} />
+        <Route path="/deliveryregister" element={<DeliveryBoyRegisterForm />} />
+
+        <Route 
+          path="/card" 
+          element={
+            <Elements stripe={stripePromise}>
+              <CardPayment />
+            </Elements> }/>
+>>>>>>> b83690c36e00d855714f7190b19325cfaf33e49e
       </Routes>
     </div>
   );

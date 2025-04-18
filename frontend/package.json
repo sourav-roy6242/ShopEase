@@ -10,16 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "@heroicons/react": "^2.2.0",
     "@shadcn/ui": "^0.0.4",
+=======
+    "@emailjs/browser": "^4.4.1",
+    "@stripe/react-stripe-js": "^3.3.0",
+    "@stripe/stripe-js": "^5.8.0",
+>>>>>>> b83690c36e00d855714f7190b19325cfaf33e49e
     "@tailwindcss/vite": "^4.0.6",
-    "axios": "^1.7.9",
+    "axios": "^1.8.1",
     "framer-motion": "^12.4.2",
     "hls.js": "^1.5.20",
+    "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.1.5",
+    "react-icons": "^5.4.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.2.0",
     "react-toastify": "^11.0.3",
     "recharts": "^2.15.1",
     "video.js": "^8.21.0"
