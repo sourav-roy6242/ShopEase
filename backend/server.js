@@ -3,6 +3,7 @@
 
 
 
+
 // import express from "express";
 // import dotenv from "dotenv";
 // import cookieParser from "cookie-parser";
@@ -94,6 +95,7 @@
 
 
 
+
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -104,7 +106,12 @@ import userRouter from "./routes/userRoute.js";
 import videoRoute from "./routes/videoRoute.js";
 import checkDiskSpace from "./utils/diskSpace.js";
 import shopRoute from "./routes/shopRoute.js";
+import shopRoute from "./routes/shopRoute.js";
 import axios from "axios"; // ✅ Fixed missing import
+
+import productRoutes from "./routes/productRoute.js";
+import DeliveryboyRouter from "./routes/deliveryboyRoute.js";
+
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -128,7 +135,7 @@ const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
 
 // ✅ Apply middleware before defining routes
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // ✅ Parse URL-encoded data
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
@@ -136,6 +143,9 @@ app.use(
     credentials: true,
   })
 );
+
+
+
 
 // ✅ Serve uploaded videos
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -176,11 +186,13 @@ app.use("/api/videos", videoRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/shops", shopRoute);
+app.use("/api/shops", productRoutes);
+app.use("/api/deliveryboy", DeliveryboyRouter);
 
 // ✅ API Test Route
 app.get("/", (req, res) => res.send("API Working"));
 
-// ✅ Global Error Handler (for unexpected issues)
+// ✅ Global Error Handler
 app.use((err, req, res, next) => {
   console.error("❌ Unhandled Error:", err);
   res.status(500).json({ error: "Internal Server Error" });
@@ -188,3 +200,6 @@ app.use((err, req, res, next) => {
 
 // ✅ Start Server
 app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
+
+
+

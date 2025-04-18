@@ -10,7 +10,7 @@ const ConfirmShopDetails = () => {
 
   const handleConfirm = () => {
     // Here you can add any additional logic before navigating, such as sending data to the server
-    navigate("/payment");
+    navigate("/uploadpage", { state: formData });
   };
 
   return (
