@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit&display=swap');
 
 
 * {
@@ -10,6 +10,7 @@
 
 body {
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,12 +19,25 @@ body {
 }
 
 .chatbot-popup {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    bottom: 90px;
+    right: 35px;
     width: 420px;
-    position: relative;
     overflow: hidden;
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transform-origin: bottom right;
+    transform: scale(0.2);
+    transition: all 0.1s ease;
+}
+
+.container.show-chatbot .chatbot-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
 }
 
 .chatbot-popup .chat-header {
@@ -84,6 +98,8 @@ body {
     flex-direction: column;
     gap: 20px;
     margin-bottom: 82px;
+    scrollbar-width: thin;
+    scrollbar-color: #DDD3F9 transparent;
 }
 
 .chat-body .message {
@@ -189,3 +205,64 @@ body {
 .chat-form .message-input:valid~button {
     display: block;
 }
+
+#chatbot-toggler {
+    position: fixed;
+    bottom: 30px;
+    right: 35px;
+    border: none;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #6D4FC2;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#chatbot-toggler span {
+    position: absolute;
+    color: #fff;
+}
+
+.container.show-chatbot #chatbot-toggler {
+    transform: rotate(90deg);
+}
+
+#chatbot-toggler span:last-child,
+.container.show-chatbot #chatbot-toggler span:first-child {
+    opacity: 0;
+}
+
+.container.show-chatbot #chatbot-toggler span:last-child {
+    opacity: 1;
+}
+
+@media (max-width: 520px) {
+    #chatbot-toggler {
+        height: 20px;
+        width: 20px;
+    }
+
+    .chatbot-popup {
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        border-radius: 0;
+        width: 100%;
+    }
+    .chatbot-popup .chat-header {
+        padding: 12px 15px;
+    }
+
+    .chat-body {
+        height: calc(90% - 55px);
+        padding: 25px 15px;
+    }
+
+    .chat-footer {
+        padding: 10px 15px 15px;
+    }
+} */
