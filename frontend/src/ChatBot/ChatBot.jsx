@@ -164,7 +164,7 @@ const ChatBot = () => {
       {!showChatbot && (
         <button
           onClick={() => setShowChatbot(true)}
-          className="fixed bottom-4 right-4 bg-indigo-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50"
+          className="fixed bottom-4 right-4 bg-indigo-700 text-white mb-20 mr-2 w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50"
         >
           <span className="material-symbols-rounded text-3xl">sms</span>
         </button>
@@ -181,7 +181,7 @@ const ChatBot = () => {
             </div>
             <button
               onClick={() => setShowChatbot(false)}
-              className="hover:bg-indigo-600 p-1 rounded-full transition"
+              className="hover:bg-indigo-600 p-1  rounded-full transition"
             >
               <span className="material-symbols-rounded text-xl">arrow_downward</span>
             </button>

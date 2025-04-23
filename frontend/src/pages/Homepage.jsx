@@ -652,6 +652,7 @@ import SubscriptionPage from "./SubcriptionPage.jsx";
 import WorkingDetails from "./WorkingDetails.jsx";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import gsap from "gsap";
+import Chatbot from "../ChatBot/ChatBot.jsx";
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -950,6 +951,7 @@ const HomePage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <Chatbot />
     </div>
   );
 };
