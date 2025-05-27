@@ -1,661 +1,513 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from "framer-motion";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-
-
-
-import { 
-  ShoppingBagIcon,
-  HeartIcon,
-  SwatchIcon,
-  AcademicCapIcon,
-  SparklesIcon,
-  CpuChipIcon,
-  // Other necessary icons
-  MagnifyingGlassIcon,
-  ShoppingCartIcon,
-  Bars3Icon,
-  XMarkIcon,
-  GiftIcon,
-
-  BookOpenIcon,
-  PuzzlePieceIcon,
-  HomeIcon,
-  FaceSmileIcon
-
-} from "@heroicons/react/24/solid";
-
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  return (
-    <motion.nav 
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="bg-gray-700 shadow-2xl py-4 px-8 flex justify-between items-center fixed w-full top-0 z-50"
-    >
-      {/* Company Name with Animated Letters */}
-      <motion.h1 
-        className="text-yellow-500 flex space-x-1 md:text-3xl lg:text-xl font-bold transition-all duration-300"
-      >
-        {"SHOPEASE".split("").map((letter, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-          >
-            {letter}
-          </motion.span>
-        ))}
-      </motion.h1>
-
-      {/* Search Bar */}
-      <div className="flex items-center bg-gray-900 rounded-full px-3 py-1 md:px-4 md:py-2 transition-all duration-300 w-26 md:w-60">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="bg-transparent focus:outline-none text-white text-sm md:text-base px-2 w-full"
-        />
-        <button className="text-yellow-500 ml-2">
-          <MagnifyingGlassIcon className="h-4 w-4 md:h-5 md:w-5" />
-        </button>
-      </div>
-
-      {/* Desktop Menu */}
-      <div className="hidden md:flex items-center space-x-6">
-        <a href="#" className="text-white hover:text-yellow-500 transition">Home</a>
-        <a href="#" className="text-white hover:text-yellow-500 transition">About Us</a>
-        <a href="#" className="text-white hover:text-yellow-500 transition">Contact Us</a>
-        <button className="text-yellow-500">
-          <ShoppingCartIcon className="h-6 w-6" />
-        </button>
-        <button className="px-4 py-2 bg-yellow-500 text-black font-semibold rounded-lg shadow-lg hover:bg-yellow-600 transition">
-          Login / Signup
-        </button>
-      </div>
-
-      {/* Mobile Menu Button */}
-      <div className="md:hidden flex items-center">
-        <button onClick={toggleMenu} className="text-white">
-          {menuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center space-y-4 py-4 md:hidden"
-        >
-          <a href="#" className="hover:text-yellow-500 transition">About Us</a>
-          <a href="#" className="hover:text-yellow-500 transition">Contact Us</a>
-          <button className="text-yellow-500">
-            <ShoppingCartIcon className="h-6 w-6" />
-          </button>
-          <button className="px-4 py-2 bg-yellow-500 text-black font-semibold rounded-lg shadow-lg hover:bg-yellow-600 transition">
-            Login / Signup
-          </button>
-        </motion.div>
-      )}
-    </motion.nav>
-  );
-};
-
-
-
-const WelcomeSection = () => {
-  return (
-    <section className="bg-gradient-to-r  from-blue-400 to-purple-400 text-black rounded-xl py-10 ml-7 shadow-2xl mr-7 text-center mt-20">
-      <motion.h2
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="text-4xl text-white drop-shadow-lg font-bold"
-      >
-        Welcome to 
-        <motion.span 
-          initial={{ scale: 1 }}
-          animate={{ scale: 1.2 }}
-          transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
-          className="text-yellow-400 font-bold ml-2"
-        >
-          SHOPEASE
-        </motion.span>
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="mt-4 text-lg font-bold max-w-2xl text-gray-700 mx-auto"
-      >
-        Your one-stop online shopping destination. Explore a wide range of products from trusted sellers at unbeatable prices!
-      </motion.p>
-    </section>
-  );
-};
-
-
-
-
-const offers = [
-  { 
-    text: "50% OFF on Electronics!", 
-    bg: "bg-gradient-to-br from-red-500 to-pink-600",
-    icon: <GiftIcon className="h-16 w-16 text-white/90" />,
-    color: "text-red-100"
-  },
-  { 
-    text: "Buy 1 Get 1 Free on Fashion!", 
-    bg: "bg-gradient-to-br from-blue-600 to-indigo-700",
-    icon: <SparklesIcon className="h-16 w-16 text-white/90" />,
-    color: "text-blue-100"
-  },
-  { 
-    text: "Free Shipping Worldwide!", 
-    bg: "bg-gradient-to-br from-emerald-600 to-teal-700",
-    icon: <ShoppingCartIcon className="h-16 w-16 text-white/90" />,
-    color: "text-emerald-100"
-  }
-];
-
-const OfferSection = () => {
-  const [currentOffer, setCurrentOffer] = useState(0);
-  const [direction, setDirection] = useState(1);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentOffer(prev => (prev + 1) % offers.length);
-      setProgress(0);
-    }, 5000);
-
-    const progressInterval = setInterval(() => {
-      setProgress(prev => Math.min(prev + 1, 100));
-    }, 50);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(progressInterval);
-    };
-  }, []);
-
-  const handleSlide = (newDirection) => {
-    setDirection(newDirection);
-    setCurrentOffer(prev => 
-      (prev + newDirection + offers.length) % offers.length
-    );
-    setProgress(0);
-  };
-
-  return (
-    <div className="relative mx-7 mt-8 h-[500px] overflow-hidden rounded-3xl shadow-2xl">
-      {/* Progress Bar */}
-      <div className="absolute top-4 left-1/2 z-30 h-1 w-64 -translate-x-1/2 transform rounded-full bg-white/20">
-        <motion.div
-          className="h-full rounded-full bg-white/80"
-          initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 5, ease: "linear" }}
-        />
-      </div>
-
-      {/* Offers Container */}
-      <motion.div
-        key={currentOffer}
-        initial={{ 
-          opacity: 0,
-          rotateY: direction === 1 ? 90 : -90,
-          scale: 0.8
-        }}
-        animate={{ 
-          opacity: 1,
-          rotateY: 0,
-          scale: 1
-        }}
-        exit={{ 
-          opacity: 0,
-          rotateY: direction === 1 ? -90 : 90,
-          scale: 0.8
-        }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        className={`relative h-full w-full ${offers[currentOffer].bg}`}
-      >
-        {/* Radial Gradient Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.1)_0%,_rgba(0,0,0,0.2)_100%)]" />
-        
-        {/* Content */}
-        <div className="flex h-full flex-col items-center justify-center space-y-8 p-8">
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-            className="rounded-2xl bg-white/10 p-6 backdrop-blur-lg"
-          >
-            {offers[currentOffer].icon}
-          </motion.div>
-          
-          <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className={`text-center text-4xl font-bold leading-tight tracking-wide ${offers[currentOffer].color} drop-shadow-lg`}
-          >
-            {offers[currentOffer].text}
-          </motion.h2>
-          
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.6, type: "spring" }}
-            className="flex space-x-4"
-          >
-            {offers.map((_, index) => (
-              <div
-                key={index}
-                className={`h-3 w-3 rounded-full transition-all duration-300 ${
-                  index === currentOffer ? 'bg-white scale-125' : 'bg-white/50'
-                }`}
-              />
-            ))}
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Navigation Buttons */}
-      <button
-        onClick={() => handleSlide(-1)}
-        className="absolute left-6 top-1/2 -translate-y-1/2 transform rounded-full bg-white/10 p-4 backdrop-blur-lg transition-all hover:bg-white/20 hover:scale-110 active:scale-95"
-      >
-        <ChevronLeftIcon className="h-8 w-8 text-white" />
-      </button>
-      
-      <button
-        onClick={() => handleSlide(1)}
-        className="absolute right-6 top-1/2 -translate-y-1/2 transform rounded-full bg-white/10 p-4 backdrop-blur-lg transition-all hover:bg-white/20 hover:scale-110 active:scale-95"
-      >
-        <ChevronRightIcon className="h-8 w-8 text-white" />
-      </button>
-
-      {/* Floating Elements */}
-      <motion.div
-        initial={{ y: -20 }}
-        animate={{ y: 20 }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          ease: 'easeInOut'
-        }}
-        className="absolute top-1/4 left-1/4 h-24 w-24 rounded-full bg-white/10 backdrop-blur-sm"
-      />
-      <motion.div
-        initial={{ y: 20 }}
-        animate={{ y: -20 }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          ease: 'easeInOut'
-        }}
-        className="absolute bottom-1/4 right-1/4 h-32 w-32 rounded-full bg-white/10 backdrop-blur-sm"
-      />
-    </div>
-  );
-};
-
-
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+import {
+  ShoppingCart,
+  Star,
+  Zap,
+  Gift,
+  Droplet,
+  Heart,
+  Sofa,
+  Plus,
+  ArrowUp,
+  Menu,
+  X,
+  Search,
+  ToyBrick,
+} from "lucide-react";
+// import { ScrollProgress } from "../components/ScrollProcess";
+// import { toast } from "react-toastify";
+// import logo from "../assets/logocmp.png";
+// import Footer from "../components/Footer";
+// import HeroSec from "../assets/heroSection1.mp4";
+// import buy from "../assets/buy1.mp4";
+// import { ChevronDown, ChevronLeft, ChevronRight, Tv, Shirt, Apple, Home, Sparkles, ToyBrick } from "lucide-react";
+// import CategoryWheel from "./categorywhell.jsx";
 
 // const categories = [
-//   {
-//     name: "Groceries",
-//     icon: <ShoppingBagIcon className="h-12 w-12" />,
-//     bg: "bg-gradient-to-br from-green-500 to-emerald-600",
-//     hover: "hover:from-green-600 hover:to-emerald-700"
-//   },
-//   {
-//     name: "Medicine",
-//     icon: <HeartIcon className="h-12 w-12" />,
-//     bg: "bg-gradient-to-br from-red-500 to-pink-600",
-//     hover: "hover:from-red-600 hover:to-pink-700"
-//   },
-//   {
-//     name: "Fashion",
-//     icon: <SwatchIcon className="h-12 w-12" />, // Changed to SwatchIcon
-//     bg: "bg-gradient-to-br from-blue-500 to-indigo-600",
-//     hover: "hover:from-blue-600 hover:to-indigo-700"
-//   },
-//   {
-//     name: "Sports",
-//     icon: <AcademicCapIcon className="h-12 w-12" />,
-//     bg: "bg-gradient-to-br from-orange-500 to-amber-600",
-//     hover: "hover:from-orange-600 hover:to-amber-700"
-//   },
-//   {
-//     name: "Jewellery",
-//     icon: <SparklesIcon className="h-12 w-12" />,
-//     bg: "bg-gradient-to-br from-purple-500 to-fuchsia-600",
-//     hover: "hover:from-purple-600 hover:to-fuchsia-700"
-//   },
-//   {
-//     name: "Electronics",
-//     icon: <CpuChipIcon className="h-12 w-12" />,
-//     bg: "bg-gradient-to-br from-cyan-500 to-sky-600",
-//     hover: "hover:from-cyan-600 hover:to-sky-700"
-//   }
+//   { name: "Electronics", icon: <Tv className="w-6 h-6" />, color: "text-blue-500" },
+//   { name: "Fashion", icon: <Shirt className="w-6 h-6" />, color: "text-pink-500" },
+//   { name: "Groceries", icon: <Apple className="w-6 h-6" />, color: "text-green-600" },
+//   { name: "Home", icon: <Home className="w-6 h-6" />, color: "text-yellow-500" },
+//   { name: "Beauty", icon: <Sparkles className="w-6 h-6" />, color: "text-purple-500" },
+//   { name: "Toys", icon: <ToyBrick className="w-6 h-6" />, color: "text-red-500" },
 // ];
 
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "react-toastify";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Tv,
+  Shirt,
+  Apple,
+  Home,
+  Sparkles,
+ 
+} from "lucide-react";
+import { ScrollProgress } from "../components/ScrollProcess";
+import Footer from "../components/Footer";
+import logo from "../assets/logocmp.png";
+import HeroSec from "../assets/heroSection1.mp4";
+import buy from "../assets/buy1.mp4";
+import CategoryWheel from "./categorywhell"; // <- extracted component
+import { useNavigate } from "react-router-dom";
+import { FaStar } from 'react-icons/fa';  // at the top of your file
+
+// Then use <FaStar /> instead of <Star /> in your JSX
 
 
-// const CategorySection = () => {
-//   return (
-//     <section className="px-6 md:px-12 lg:px-24 py-16 bg-gray-100">
-//       <motion.h2 
-//         initial={{ opacity: 0, y: 20 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.6 }}
-//         className="text-4xl font-bold text-center mb-12 text-gray-800"
-//       >
-//         Shop by Category
-//       </motion.h2>
-      
-//       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-//         {categories.map((category, index) => (
-//           <motion.div
-//             key={category.name}
-//             initial={{ opacity: 0, scale: 0.8 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             transition={{ delay: index * 0.1, duration: 0.5 }}
-//             whileHover={{ scale: 1.05 }}
-//             className={`${category.bg} ${category.hover} rounded-2xl p-6 cursor-pointer transition-all duration-300 shadow-lg hover:shadow-xl group relative overflow-hidden`}
-//           >
-//             {/* Animated Background */}
-//             <motion.div
-//               initial={{ scale: 0 }}
-//               whileHover={{ scale: 2 }}
-//               className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl"
-//             />
-            
-//             {/* Content */}
-//             <div className="flex flex-col items-center space-y-4 relative z-10">
-//               <motion.div
-//                 whileHover={{ rotate: 360, scale: 1.2 }}
-//                 className="bg-white/20 p-4 rounded-full"
-//               >
-//                 {category.icon}
-//               </motion.div>
-//               <h3 className="text-xl font-semibold text-white text-center">
-//                 {category.name}
-//               </h3>
-//             </div>
-            
-//             {/* Glowing Effect */}
-//             <div className="absolute inset-0 rounded-2xl border-2 border-white/20 group-hover:border-white/40 transition-all duration-300" />
-//           </motion.div>
-//         ))}
-//       </div>
-
-//       {/* Floating Particles Animation */}
-//       <div className="absolute inset-0 pointer-events-none">
-//         {[...Array(10)].map((_, i) => (
-//           <motion.div
-//             key={i}
-//             initial={{ 
-//               x: Math.random() * 100,
-//               y: Math.random() * 100,
-//               scale: 0 
-//             }}
-//             animate={{ 
-//               x: Math.random() * 100,
-//               y: Math.random() * 100,
-//               scale: [0, 1, 0],
-//               rotate: 360
-//             }}
-//             transition={{
-//               duration: Math.random() * 4 + 4,
-//               repeat: Infinity,
-//               ease: "linear"
-//             }}
-//             className="absolute w-2 h-2 bg-white/30 rounded-full"
-//             style={{
-//               left: `${Math.random() * 100}%`,
-//               top: `${Math.random() * 100}%`
-//             }}
-//           />
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-
-
-const categories = [
-  {
-    name: "Groceries",
-    icon: <ShoppingBagIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-green-500 to-emerald-600",
-  },
-  {
-    name: "Medicine",
-    icon: <HeartIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-red-500 to-pink-600",
-  },
-  {
-    name: "Fashion",
-    icon: <SwatchIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-blue-500 to-indigo-600",
-  },
-  {
-    name: "Sports",
-    icon: <AcademicCapIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-orange-500 to-amber-600",
-  },
-  {
-    name: "Jewellery",
-    icon: <SparklesIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-purple-500 to-fuchsia-600",
-  },
-  {
-    name: "Electronics",
-    icon: <CpuChipIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-cyan-500 to-sky-600",
-  },
-  {
-    name: "Books",
-    icon: <BookOpenIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-rose-500 to-red-600",
-  },
-  {
-    name: "Toys",
-    icon: <PuzzlePieceIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-yellow-500 to-amber-600",
-  },
-  {
-    name: "Furniture",
-    icon: <HomeIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-stone-500 to-zinc-600",
-  },
-  {
-    name: "Beauty",
-    icon: <FaceSmileIcon className="h-12 w-12" />,
-    bg: "bg-gradient-to-br from-pink-500 to-rose-600",
-  }
-];
-
-
-
-
-const CategorySection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const cardWidth = 320;
-  const totalCategories = categories.length;
-  const containerRef = React.useRef(null);
-  const [centerOffset, setCenterOffset] = useState(0);
-
-  React.useEffect(() => {
-    // Calculate center offset after component mounts
-    if (containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
-      setCenterOffset(containerWidth / 2 - cardWidth / 2);
-      setActiveIndex(Math.floor(totalCategories / 2));
-    }
-  }, [totalCategories]);
-
-  const nextSlide = () => {
-    setActiveIndex(prev => (prev + 1) % totalCategories);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex(prev => (prev - 1 + totalCategories) % totalCategories);
-  };
-
-  return (
-    <div className="mx-7 my-20 overflow-hidden" ref={containerRef}>
-      <section className="relative py-24 bg-gradient-to-br from-gray-900 to-gray-800 rounded-4xl shadow-2xl">
-        <motion.div 
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, type: "spring" }}
-          className="absolute inset-0 opacity-10 bg-gradient-radial from-white to-transparent"
-        />
-
-        <div className="text-center mb-20 px-8 relative z-10">
-          <motion.h2 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl font-bold text-white mb-4"
-          >
-            Featured Categories
-            <motion.div 
-              className="h-1 bg-gradient-to-r from-blue-400 to-purple-500 mt-4 mx-auto"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            />
-          </motion.h2>
-        </div>
-
-        <div className="relative h-[500px] perspective-1000px overflow-hidden">
-          <motion.div 
-            className="flex"
-            style={{ x: -activeIndex * cardWidth + centerOffset }}
-            animate={{ 
-              x: -activeIndex * cardWidth + centerOffset,
-              transition: { type: "spring", stiffness: 300, damping: 30 }
-            }}
-          >
-            {categories.map((category, index) => {
-              const distance = Math.abs(index - activeIndex);
-              const scale = 1 - distance * 0.15;
-              const opacity = 1 - distance * 0.3;
-
-              return (
-                <motion.div
-                  key={category.name}
-                  className="w-[320px] h-[400px] mx-4 shrink-0 origin-center transform-preserve-3d"
-                  style={{
-                    scale,
-                    opacity,
-                    rotateY: (index - activeIndex) * 15,
-                  }}
-                  transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                  whileHover={{ 
-                    scale: index === activeIndex ? 1.1 : 1.05,
-                    y: index === activeIndex ? -15 : -10,
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-                  }}
-                >
-                  <motion.div
-                    className={`${category.bg} h-full rounded-3xl p-8 shadow-2xl overflow-hidden 
-                      ${index === activeIndex ? 'ring-4 ring-white/20' : ''}`}
-                    initial={{ scale: 0.7, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: index * 0.1, type: "spring" }}
-                  >
-                   
-
-                    <motion.div 
-                      className="mb-8 p-6 bg-white/10 rounded-full backdrop-blur-sm mx-auto w-fit"
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                    >
-                      {category.icon}
-                    </motion.div>
-
-                    <h3 className="text-2xl font-bold text-white text-center mb-4">
-                      {category.name}
-                    </h3>
-
-                    <motion.div 
-                      className="h-1 bg-white/30 rounded-full mx-auto"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: '60%' }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-
-        <div className="flex justify-center mt-16 gap-4 relative z-10">
-          <motion.button
-            onClick={prevSlide}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="p-4 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all"
-          >
-            <ChevronLeftIcon className="h-8 w-8 text-white" />
-          </motion.button>
-          
-          <div className="flex items-center gap-2">
-            {categories.map((_, index) => (
-              <motion.div
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`h-3 rounded-full cursor-pointer transition-all ${
-                  index === activeIndex 
-                    ? 'w-8 bg-gradient-to-r from-blue-400 to-purple-500' 
-                    : 'w-3 bg-white/30'
-                }`}
-                whileHover={{ scaleY: 1.5 }}
-              />
-            ))}
-          </div>
-
-          <motion.button
-            onClick={nextSlide}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="p-4 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all"
-          >
-            <ChevronRightIcon className="h-8 w-8 text-white" />
-          </motion.button>
-        </div>
-      </section>
-    </div>
-  );
-};
 
 
 const BuyerHomePage = () => {
+  const [products, setProducts] = useState([]);
+  // const [categories] = useState([
+  //   { name: "Electronics", icon: <Zap size={30} />, color: "text-blue-500" },
+  //   { name: "Fashion", icon: <Gift size={30} />, color: "text-pink-500" },
+  //   {
+  //     name: "Home & Furniture",
+  //     icon: <Sofa size={30} />,
+  //     color: "text-purple-500",
+  //   },
+  //   { name: "Beauty", icon: <Droplet size={30} />, color: "text-red-500" },
+  //   { name: "Sports", icon: <Heart size={30} />, color: "text-green-500" },
+  //   { name: "Medicines", icon: <Plus size={30} />, color: "text-yellow-500" },
+  //   { name: "Toys", icon: <ToyBrick size={30} />, color: "text-teal-500" },
+  //   { name: "Grocery", icon: <ArrowUp size={30} />, color: "text-gray-500" },
+  // ]);
+  // const [currentOffer, setCurrentOffer] = useState(0);
+  // const [cart, setCart] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [searchQuery, setSearchQuery] = useState("");
+  
+  const [currentOffer, setCurrentOffer] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+
+  const navLinks = [
+    { name: "Home", href: "#" },
+    { name: "About Us", href: "#" },
+    { name: "Contact Us", href: "#" },
+  ];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        if (!response.ok) throw new Error("Failed to fetch products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        setError(err.message);
+        toast.error("Failed to load products");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentOffer((prev) => (prev + 1) % 3);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const addToCart = (product) => {
+    try {
+      setCart([...cart, product]);
+      toast.success(`${product.title.substring(0, 20)}... added to cart!`);
+    } catch (err) {
+      toast.error("Failed to add item to cart");
+    }
+  };
+
+  const buyNow = (product) => {
+    toast.info(`Proceeding to buy: ${product.title.substring(0, 20)}...`);
+    // Placeholder for actual buy flow
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="h-12 w-12 border-4 border-purple-500 border-t-transparent rounded-full"
+        />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center p-8 bg-red-100 rounded-lg">
+          <h2 className="text-2xl text-red-600 mb-4">Error Loading Products</h2>
+          <p className="text-gray-600">{error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <Navbar />
-      <WelcomeSection />
-      <OfferSection />
-      <CategorySection />
+    <div className="bg-white text-gray-800 min-h-screen">
+      <ScrollProgress />
+      {/* Navbar & Hero remain unchanged */}
+
+      {/* Navbar */}
+      <nav className="fixed w-full h-18 top-0 z-50 bg-white shadow border-b">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <motion.div
+            className="flex items-center gap-2  cursor-pointer"
+            whileHover={{ scale: 1.5 }}
+            onClick={() => navigate("/")}
+          >
+            {/* <img src={logo} alt="ShopEase Logo" className="h-15 w-auto  object-contain" /> */}
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-16 w-25 mb-2 rounded-full object-contain"
+            />
+          </motion.div>
+
+          {/* Search Bar */}
+          <div className="hidden ml-30 mb-5 md:flex flex-1 max-w-xl mx-8">
+            <div className="relative w-full">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
+              />
+              <button className="absolute right-3 top-2.5 text-gray-400 hover:text-purple-600 transition">
+                <Search size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* Nav Links */}
+          <div className="hidden md:flex items-center space-x-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-gray-600 hover:text-purple-600 transition"
+              >
+                {link.name}
+              </a>
+            ))}
+            <button className="text-cyan-400 font-medium hover:underline">
+              Login
+            </button>
+            <button className="bg-cyan-400 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+              Sign Up
+            </button>
+          </div>
+
+          {/* Icons */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <button className="text-gray-500 hover:text-cyan-400 transition">
+              <Search size={24} />
+            </button>
+            <button className="relative text-gray-600">
+              <ShoppingCart size={24} />
+              {cart.length > 0 && (
+                <motion.span
+                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                >
+                  {cart.length}
+                </motion.span>
+              )}
+            </button>
+            <button
+              className="text-gray-600 hover:cyan-400"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Nav */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden bg-white shadow"
+            >
+              <div className="px-4 py-6 space-y-4 border-t">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="block text-gray-700 hover:text-cyan-400 transition"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <button className="w-full py-2 text-cyan-400 hover:underline">
+                  Login
+                </button>
+                <button className="w-full py-2 bg-cyan-400 text-white rounded-lg hover:bg-cyan-400 transition">
+                  Sign Up
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      {/* Hero */}
+      <section className="relative w-full h-[40vh] overflow-hidden bg-black flex items-center justify-center">
+  {/* Video */}
+  <img src={logo} alt="Logo" className="absolute top-32 left-20 mr-270 w-50 h-50 object-cover z-90 rounded-full" />
+  <video autoPlay loop muted playsInline className="absolute top-25 right-20 bg-amber-transparent w-75 h-70 object-cover z-70">
+    <source src={buy} type="video/mp4" />
+  </video>
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute top-0 left-0 w-full h-full object-contain z-0"
+  >
+    <source src={HeroSec} type="video/mp4" />
+  </video>
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/30 z-10"></div>
+
+  {/* Text */}
+  <motion.h1
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    className="text-3xl md:text-7xl font-bold mt-65 text-center text-white z-20 px-4"
+  >
+    Discover <span className="text-cyan-400">Endless Choices</span>
+  </motion.h1>
+</section>
+
+
+
+
+      {/* Offers */}
+      {/* <section className="py-8 h-170 ">
+        
+          <h2 className="text-4xl font-bold mt-8 mb-8 ml-20 mr-20">Today's Offers</h2>
+          <div className="relative h-120 mb-20 ml-20 mr-20 rounded-xl overflow-hidden shadow-lg">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentOffer}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                className="absolute inset-0 flex items-center justify-center text-white text-center p-8"
+                style={{
+                  background:
+                    currentOffer === 0
+                      ? "linear-gradient(to right, #8e2de2, #4a00e0)"
+                      : currentOffer === 1
+                      ? "linear-gradient(to right, #f7971e, #ffd200)"
+                      : "linear-gradient(to right, #00c6ff, #0072ff)",
+                }}
+              >
+                <div>
+                  <h3 className="text-3xl font-bold mb-2">
+                    {currentOffer === 0
+                      ? "70% Off Electronics"
+                      : currentOffer === 1
+                      ? "Fashion Festival"
+                      : "Health & Wellness"}
+                  </h3>
+                  <p>
+                    {currentOffer === 0
+                      ? "Get the best deals on gadgets now"
+                      : currentOffer === 1
+                      ? "Trendy looks at half the price"
+                      : "Boost your health with daily care products"}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        
+      </section> */}
+
+
+<section className="py-6 bg-gray-50">
+  <h2 className="text-5xl font-bold text-center mb-10">Today's Offers</h2>
+
+  <div className="relative mx-20 h-[26rem] rounded-3xl  overflow-hidden shadow-2xl">
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={currentOffer}
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-12"
+        style={{
+          background:
+            currentOffer === 0
+              ? "linear-gradient(135deg, #8e2de2, #4a00e0)"
+              : currentOffer === 1
+              ? "linear-gradient(135deg, #f7971e, #ffd200)"
+              : "linear-gradient(135deg, #00c6ff, #0072ff)",
+        }}
+      >
+        <div className="max-w-2xl">
+          <h3 className="text-5xl font-extrabold mb-4">
+            {currentOffer === 0
+              ? "70% Off Electronics"
+              : currentOffer === 1
+              ? "Fashion Festival"
+              : "Health & Wellness"}
+          </h3>
+          <p className="text-xl">
+            {currentOffer === 0
+              ? "Get the best deals on top gadgets now"
+              : currentOffer === 1
+              ? "Explore trendy looks at unbeatable prices"
+              : "Rejuvenate with our wellness product range"}
+          </p>
+        </div>
+      </motion.div>
+    </AnimatePresence>
+
+    {/* Left Arrow */}
+    <button
+      onClick={() => setCurrentOffer((prev) => (prev - 1 + 3) % 3)}
+      className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-transparent bg-opacity-30 hover:bg-opacity-50 text-black p-3 rounded-full shadow-md transition"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    {/* Right Arrow */}
+    <button
+      onClick={() => setCurrentOffer((prev) => (prev + 1) % 3)}
+      className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-transparent bg-opacity-30 hover:bg-opacity-50 text-black p-3 rounded-full shadow-md transition"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  {/* Dots Under the Card */}
+  <div className="mt-6 flex justify-center space-x-3">
+    {[0, 1, 2].map((index) => (
+      <button
+        key={index}
+        onClick={() => setCurrentOffer(index)}
+        className={`w-4 h-4 rounded-full ${
+          currentOffer === index ? "bg-gray-800" : "bg-gray-400"
+        } transition-all duration-300`}
+      />
+    ))}
+  </div>
+</section>
+
+
+      {/* Categories */}
+      {/* <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8">Shop by Category</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {categories.map((cat, i) => (
+              <motion.div
+                key={cat.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white border rounded-lg p-6 flex flex-col items-center justify-center shadow hover:shadow-lg transition"
+              >
+                <div className={`${cat.color} mb-2`}>{cat.icon}</div>
+                <h3 className="font-medium">{cat.name}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+      
+     
+
+
+      <CategoryWheel/>
+
+      {/* Products */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8">Best Sellers</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {products.map((product) => (
+              <motion.div
+                key={product.id}
+                whileHover={{ y: -5 }}
+                className="bg-white border rounded-2xl p-4 shadow-lg hover:shadow-2xl transition flex flex-col justify-between"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-40 object-contain mb-4"
+                />
+                <h3 className="text-sm font-medium mb-2 line-clamp-2">
+                  {product.title}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {product.description}
+                </p>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-cyan-400 font-bold text-lg">
+                    ${product.price}
+                  </span>
+                  {/* <Star size={18} className="text-yellow-400" /> */}
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="flex-1 py-2 px-3 bg-cyan-400 text-white rounded-lg hover:cyan-400 transition text-sm"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    onClick={() => buyNow(product)}
+                    className="flex-1 py-2 px-3 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-purple-50 transition text-sm"
+                  >
+                    Buy Now
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <motion.button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-6 right-6 p-3 bg-gray-600 text-white rounded-full shadow-lg hover:bg-black transition"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <ArrowUp size={20} />
+      </motion.button>
+
+      <Footer />
     </div>
   );
 };

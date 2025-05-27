@@ -8,7 +8,6 @@ import userRouter from "./routes/userRoute.js";
 import videoRoute from "./routes/videoRoute.js";
 import checkDiskSpace from "./utils/diskSpace.js";
 import shopRoute from "./routes/shopRoute.js";
-import shopRoute from "./routes/shopRoute.js";
 import axios from "axios"; // ✅ Fixed missing import
 
 import productRoutes from "./routes/productRoute.js";

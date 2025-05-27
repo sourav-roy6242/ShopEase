@@ -19,6 +19,8 @@ import VideoPage from "./pages/VideoPage.jsx";
 import SellerDashboard from "./pages/newHomepage.jsx";
 import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
 import BuyerHomePage from "./pages/BuyerHomePage.jsx";
+import CheckoutPage from "./pages/CheckOutPage.jsx";
+import AdminDashboard from "./pages/AdminDash.jsx";
 
 
 import UserLocation from "./UserLocation.jsx";
@@ -51,9 +53,9 @@ function App() {
         <Route path="/workingdetails" element={<WorkingDetails />} />
         <Route path="/videos" element={<VideoPage />} />
         <Route path="/dashboard" element={<SellerDashboard />} />
-        <Route path="/confirm-shop-details" element={<ConfirmShopDetails />} />
-       
-
+        <Route path="/confirmshopdetails" element={<ConfirmShopDetails />} />
+       <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/admindash" element={<AdminDashboard />} />
         <Route path="/userlocation" element={<UserLocation />} />
 
       

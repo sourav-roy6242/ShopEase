@@ -22,7 +22,7 @@ const SellerDashboard = () => {
   const [subscription, setSubscription] = useState({
     plan: "Silver Plan",
     status: "Active",
-    validity: "2025-03-30", // Ensure this is a valid future date
+    validity: "2025-07-30", // Ensure this is a valid future date
     daysRemaining: 120,
   });
 
@@ -121,11 +121,11 @@ const SellerDashboard = () => {
   return (
     <div>
       <Navbar />
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="min-h-screen  flex flex-col bg-gray-50">
         {/* Main Content with Sidebar */}
         <div className="flex flex-1">
           {/* Sidebar */}
-          <div className="w-64 bg-white shadow-lg fixed inset-y-0 left-0 z-40 overflow-y-auto">
+          <div className="w-64 bg-white mt-20 shadow-lg h-190 fixed inset-y-0 left-0 z-40 overflow-y-auto">
             <div className="p-6">
               {/* Shop Information */}
               <div className="mb-8">
