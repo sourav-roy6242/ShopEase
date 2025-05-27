@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { FaCrown, FaCheck, FaRocket } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import payment from "./PaymentPage.jsx"
 
 const SubscriptionPage = () => {
+  const navigate = useNavigate();
   const plans = [
     { 
       duration: "1 Month", 
@@ -131,6 +134,7 @@ const SubscriptionPage = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate("/payment")}
                   className={`w-full py-4 rounded-xl text-white  font-semibold transition-all bg-gradient-to-br from-purple-400 to-indigo-500  hover:from-cyan-400 hover:to-purple-500   ${
                     plan.highlight
                       ? "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500"

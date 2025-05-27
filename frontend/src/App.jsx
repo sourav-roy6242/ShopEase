@@ -21,6 +21,7 @@ import ConfirmShopDetails from "./pages/ConfirmShopDetails.jsx";
 import BuyerHomePage from "./pages/BuyerHomePage.jsx";
 import CheckoutPage from "./pages/CheckOutPage.jsx";
 import AdminDashboard from "./pages/AdminDash.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
 
 
 import UserLocation from "./UserLocation.jsx";
@@ -57,7 +58,7 @@ function App() {
        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/admindash" element={<AdminDashboard />} />
         <Route path="/userlocation" element={<UserLocation />} />
-
+        <Route path="/payment" element={<PaymentPage />} />
       
         <Route path="/buyerhome" element={<BuyerHomePage/>} />
        
