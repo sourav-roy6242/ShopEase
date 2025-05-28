@@ -22,7 +22,7 @@ import BuyerHomePage from "./pages/BuyerHomePage.jsx";
 import CheckoutPage from "./pages/CheckOutPage.jsx";
 import AdminDashboard from "./pages/AdminDash.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
-
+import EcommercePage from "./pages/EcommercePage.jsx";
 
 import UserLocation from "./UserLocation.jsx";
 
@@ -59,7 +59,7 @@ function App() {
         <Route path="/admindash" element={<AdminDashboard />} />
         <Route path="/userlocation" element={<UserLocation />} />
         <Route path="/payment" element={<PaymentPage />} />
-      
+        <Route path="/ecommerce" element={<EcommercePage />} />
         <Route path="/buyerhome" element={<BuyerHomePage/>} />
        
 
