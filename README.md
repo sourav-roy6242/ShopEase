@@ -21,12 +21,7 @@ By bridging the gap between offline sellers and digital customers, ShopEase empo
 
 <img width="1680" alt="Image" src="https://github.com/user-attachments/assets/e59a3602-c760-49ef-8278-b541a2c1730b" />
 
-## 🎁  Plans -
 
-<img width="1678" alt="Image" src="https://github.com/user-attachments/assets/38b84351-d8b3-4b46-b0b8-200a621304cf" />
-
-## 🛍️ Logo -
-![Image](https://github.com/user-attachments/assets/f7c2c49d-e7fa-4667-90be-b18645170a09)
 
 
 ## 🚀 Features
@@ -85,7 +80,14 @@ ShopEase provides a **free or affordable** platform to bring their stores online
 - **Frontend**: React.js, Tailwind CSS  
 - **Backend**: Node.js , Express 
 - **Database**: MongoDB   
-- **Authentication**: OTP 
+- **Authentication**: OTP
+
+## 🎁  Plans -
+
+<img width="1678" alt="Image" src="https://github.com/user-attachments/assets/38b84351-d8b3-4b46-b0b8-200a621304cf" />
+
+## 🛍️ Logo -
+![Image](https://github.com/user-attachments/assets/f7c2c49d-e7fa-4667-90be-b18645170a09)
 
 
 
