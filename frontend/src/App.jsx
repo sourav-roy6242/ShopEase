@@ -23,14 +23,11 @@ import CheckoutPage from "./pages/CheckOutPage.jsx";
 import AdminDashboard from "./pages/AdminDash.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import EcommercePage from "./pages/EcommercePage.jsx";
-
 import UserLocation from "./UserLocation.jsx";
-
-
-
-
-
-
+// import  LocationPage from "./pages/LocationPage.jsx";
+import DeliveryBoyDashboard from "./DeliveryBoyPages/deliveryBoyDashboard.jsx";
+import DeliveryBoyHomepage from "./DeliveryBoyPages/DeliveryBoyHomepage.jsx";
+import DeliveryBoyRegister from "./DeliveryBoyPages/DeliveryBoyRegisterForm.jsx";
 
 import "./App.css";
 
@@ -61,11 +58,11 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/ecommerce" element={<EcommercePage />} />
         <Route path="/buyerhome" element={<BuyerHomePage/>} />
-       
-
         <Route path="/location" element={<UserLocation />} />
-   
-
+        {/* <Route path="/locationpage" element={<LocationPage />} /> */}
+        <Route path="/deliverydash" element={<DeliveryBoyDashboard />} />
+        <Route path="/deliveryhome" element={<DeliveryBoyHomepage />} />
+         <Route path="/deliveryregister" element={<DeliveryBoyRegister />} />
        
       </Routes>
     </div>

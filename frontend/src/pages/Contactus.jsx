@@ -228,7 +228,7 @@ const ContactUs = () => {
         </motion.section>
       </motion.main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
