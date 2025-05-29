@@ -13,6 +13,11 @@ With the rapid expansion of large online retailers, many small businesses are st
 
 By bridging the gap between offline sellers and digital customers, ShopEase empowers small businesses to thrive in the modern marketplace.
 
+## Seller Home Page -
+
+<img width="1679" alt="Image" src="https://github.com/user-attachments/assets/02f0ce52-92d2-4658-b55a-9d6c7b3ee6af" />
+
+
 ## 🚀 Features
 
 - #### 🛍️ Local Store Integration
