@@ -159,6 +159,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logocmp.png"; // Assuming you have a logo image
 import {
   FaMotorcycle,
   FaMoneyBillAlt,
@@ -182,9 +183,9 @@ const DeliveryBoyHome = () => {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <div className="bg-blue-600 text-white font-bold text-xl p-2 rounded-lg">
-                  DELIVERY<span className="text-yellow-400">PRO</span>
-                </div>
+              
+                  <img src={logo} alt="Logo" className="h-20 w-15 inline-block mr-2" />
+                
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
