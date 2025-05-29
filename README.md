@@ -89,7 +89,9 @@ ShopEase provides a **free or affordable** platform to bring their stores online
 ## 🛍️ Logo -
 ![Image](https://github.com/user-attachments/assets/f7c2c49d-e7fa-4667-90be-b18645170a09)
 
+## 📦 Buyer DashBoard -
 
+<img width="1680" alt="Image" src="https://github.com/user-attachments/assets/688a784f-f4bf-4f4b-97cd-3e8178a77371" />
 
 
 ## 🏁 Conclusion
