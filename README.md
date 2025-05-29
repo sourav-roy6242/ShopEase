@@ -95,7 +95,7 @@ ShopEase provides a **free or affordable** platform to bring their stores online
 <img width="1680" alt="Image" src="https://github.com/user-attachments/assets/688a784f-f4bf-4f4b-97cd-3e8178a77371" />
 
 ## 🛵 Delivery Boy Home Page -
-https://github.com/sourav-roy6242/ShopEase/commit/854860e44a73b73c331937f65081da8cecf88455#commitcomment-158449809
+<img width="1609" alt="Image" src="https://github.com/user-attachments/assets/c5f81341-2d98-4ae7-9fc3-e7610511638c" />
 
 
 ## 📄 Delivery Boy Registration Form -
