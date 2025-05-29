@@ -24,6 +24,7 @@ By bridging the gap between offline sellers and digital customers, ShopEase empo
 
 
 
+
 ## 🚀 Features
 
 - #### 🛍️ Local Store Integration
@@ -90,6 +91,14 @@ ShopEase provides a **free or affordable** platform to bring their stores online
 ![Image](https://github.com/user-attachments/assets/f7c2c49d-e7fa-4667-90be-b18645170a09)
 
 ## 📦 Buyer DashBoard -
+
+<img width="1680" alt="Image" src="https://github.com/user-attachments/assets/688a784f-f4bf-4f4b-97cd-3e8178a77371" />
+
+## 🛵 Delivery Boy Home Page -
+
+<img width="1427" alt="Image" src="https://github.com/user-attachments/assets/d78e7cc5-f559-46a6-ac7e-302e7469d8c4" />
+
+## 📄 Delivery Boy Registration Form -
 
 <img width="1680" alt="Image" src="https://github.com/user-attachments/assets/688a784f-f4bf-4f4b-97cd-3e8178a77371" />
 
