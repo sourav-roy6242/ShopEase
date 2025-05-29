@@ -17,6 +17,15 @@ By bridging the gap between offline sellers and digital customers, ShopEase empo
 
 <img width="1679" alt="Image" src="https://github.com/user-attachments/assets/02f0ce52-92d2-4658-b55a-9d6c7b3ee6af" />
 
+## Buyer Home Page -
+
+<img width="1680" alt="Image" src="https://github.com/user-attachments/assets/e59a3602-c760-49ef-8278-b541a2c1730b" />
+
+## Plans -
+
+<img width="1678" alt="Image" src="https://github.com/user-attachments/assets/38b84351-d8b3-4b46-b0b8-200a621304cf" />
+
+
 
 ## 🚀 Features
 
