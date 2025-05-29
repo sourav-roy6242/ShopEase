@@ -13,18 +13,20 @@ With the rapid expansion of large online retailers, many small businesses are st
 
 By bridging the gap between offline sellers and digital customers, ShopEase empowers small businesses to thrive in the modern marketplace.
 
-## Seller Home Page -
+## 🏠 Seller Home Page -
 
 <img width="1679" alt="Image" src="https://github.com/user-attachments/assets/02f0ce52-92d2-4658-b55a-9d6c7b3ee6af" />
 
-## Buyer Home Page -
+## 🏠 Buyer Home Page -
 
 <img width="1680" alt="Image" src="https://github.com/user-attachments/assets/e59a3602-c760-49ef-8278-b541a2c1730b" />
 
-## Plans -
+## 🎁  Plans -
 
 <img width="1678" alt="Image" src="https://github.com/user-attachments/assets/38b84351-d8b3-4b46-b0b8-200a621304cf" />
 
+## 🛍️ Logo -
+![Image](https://github.com/user-attachments/assets/f7c2c49d-e7fa-4667-90be-b18645170a09)
 
 
 ## 🚀 Features
@@ -97,4 +99,4 @@ By providing an easy, affordable, and supportive platform, ShopEase aims to brid
 This startup is still growing, and we're constantly working to improve and expand.
 Join us on this journey to make local shopping easier, smarter, and more accessible—for everyone.
 
-![Image](https://github.com/user-attachments/assets/f7c2c49d-e7fa-4667-90be-b18645170a09)
+
